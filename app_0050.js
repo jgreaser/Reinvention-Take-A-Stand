@@ -134,7 +134,7 @@ function changeScreen(changeTo){
 		//Determine when to go to CHALLENGER
         if (evidenceCount == maxEvidence) {
 		alert('a challenger appears!');
-		showDialog("Take a Stand!","A challenger appears! Are you ready to take this one?","confirmArgument", "debate", "chooseSources");
+			showDialog("Take a Stand!","A challenger appears! Are you ready to take this one?","confirmArgument", "debate", "chooseSources");
         }
 		
     });
