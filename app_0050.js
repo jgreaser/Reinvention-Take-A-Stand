@@ -140,16 +140,39 @@ function changeScreen(changeTo){
     });
 	
 	
+	
+	
+	
 	function buildSupportingEvidenceList(){
 		$('.supportingEvidenceList').html('');
 		
-		$.each( supportingEvidence, function(key, value) 
-			{
-  			$('.supportingEvidenceList').append("<li class='supportingEvidenceListItem'>" + value + "</li>");
-			});
+		$.each( supportingEvidence, function(key, value) {
+			// Cache title of source
+			var title = $('#'+value).html();
+			
+			// add list item
+  			$('.supportingEvidenceList').append("<li>"+title+" <a href='javascript:void(0);' data-id='"+value+"' class='supportingEvidenceListItem'>[x]</li>");
+  			
+  			
+		});
+		
+		// add click event to item
+  		$('.supportingEvidenceListItem').click(function(){
+	  		removeSupportingEvidenceItem($(this).attr('data-id'));
+  		});
 	}
 	
-
+	function removeSupportingEvidenceItem(id){
+		// Remove item from array
+		var itemid = supportingEvidence.indexOf(id);
+		supportingEvidence.splice(itemid,1);
+		if(evidenceCount > 0){
+			evidenceCount--;
+		}
+		buildSupportingEvidenceList();
+		
+	}
+	
 
     //00600 - adds evidence to panel shown in modal
     $(".argument").click(function(event) {
