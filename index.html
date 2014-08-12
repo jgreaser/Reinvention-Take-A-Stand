@@ -7,6 +7,8 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="app_0050.js"></script>
+	<script src="js/dialog.js"></script>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
 
@@ -66,7 +68,7 @@
                 </div>
                 <div id="good" class="drop ui-widget-header col-md-4 panel panel-default">
                     <h4>Solar is good.</h4>
-                    <p class="chooseStanceArgument">I choose to stand by solar power!
+                    <p class="chooseStanceArgument" data-stance="pro">I choose to stand by solar power!
                         <br />
                         <br />
                     </p>
@@ -130,25 +132,27 @@
                 <div id="source01" class="sources">
                     <h4>SOURCE 1</h4>
                     <p>Yadda yadda yadda.
-                        <span class="sourceEvidence" id="tag_01" data-keyword="pro01">Tagged content here supporting argument 1.</span>
-                        <span class="sourceEvidence" id="tag_02" data-keyword="pro02">More tagged content here supporting argument 2.</span>
-                        <span class="sourceEvidence" id="tag_03" data-keyword="none">Irrelevant tagged content here.</span>
+                        <span class="sourceEvidence" id="tag_01" data-keyword="pro04">Pro arugment 4.</span>
+                        <span class="sourceEvidence" id="tag_02" data-keyword="pro05">Pro argument 5.</span>
+                        <span class="sourceEvidence" id="tag_03" data-keyword="distractor">Distractor content here.</span>
                     </p>
                 </div>
 
                 <div id="source02" class="sources">
                     <h4>SOURCE 2</h4>
-                    <p>Yadda yadda yadda. <span class="sourceEvidence" id="tag_07" data-keyword="pro01">Tagged content here supporting argument 1.</span> 
-                        <span class="sourceEvidence" id="tag_08" data-keyword="pro02">More tagged content here supporting argument 2.</span> 
-                        <span class="sourceEvidence" id="tag_09" data-keyword="none">Irrelevant tagged content here.</span>
+                    <p>Yadda yadda yadda. 
+                    	<span class="sourceEvidence" id="tag_07" data-keyword="pro01">Pro argument 1.</span> 
+                        <span class="sourceEvidence" id="tag_08" data-keyword="pro03">Pro argument 3.</span> 
+                        <span class="sourceEvidence" id="tag_09" data-keyword="con01">Con argument 1.</span>
                     </p>
 
                 </div>
                 <div id="source03" class="sources">
                     <h4>SOURCE 3</h4>
-                    <p>Yadda yadda yadda. <span class="sourceEvidence" id="tag_11" data-keyword="pro01">Tagged content here supporting argument 1.</span> 
-                        <span class="sourceEvidence" id="tag_12" data-keyword="pro02">More tagged content here supporting argument 2.</span> 
-                        <span class="sourceEvidence" id="tag_13" data-keyword="none">Irrelevant tagged content here.</span>
+                    <p>Yadda yadda yadda. 
+                    	<span class="sourceEvidence" id="tag_11" data-keyword="pro04">Pro argument 4</span> 
+                        <span class="sourceEvidence" id="tag_12" data-keyword="con02">Con argument 2.</span> 
+                        <span class="sourceEvidence" id="tag_13" data-keyword="con03">Con argument 3.</span>
                     </p>
                 </div>
             </div>
