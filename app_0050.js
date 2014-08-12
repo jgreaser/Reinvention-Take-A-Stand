@@ -18,8 +18,22 @@ $(document).ready(function(){
 
     var evidenceCount = 0;
 	var maxEvidence = 5;
-
 	
+	var currentScreen = "index"; // What is the current screen the app is on?
+
+	// Set the initial Screen to display (function below)
+	changeScreen(currentScreen);
+
+// Updates the current screen
+function changeScreen(changeTo){
+	// Hide current screen
+	$('#'+currentScreen).hide();
+	
+	// Show new screen
+	currentScreen = changeTo;
+	$('#'+currentScreen).show();
+	
+}
 
 	//INITIATE PROTOTYPE!
 	//Initial dialog, show index
@@ -41,7 +55,9 @@ $(document).ready(function(){
 		// Show confirm dialog
 		BootstrapDialog.confirm("You have chosen the "+stance+" stance, are you sure?",function(result){
 			if(result){
+				// If user chooses yes then...
 				stanceSide = $(this).data('stance');
+				changeScreen("chooseArgument");
 			}
 		});
 		
@@ -50,7 +66,7 @@ $(document).ready(function(){
 
 	//PICK ARGUMENT	
 	//listen for click on arguments
-		$('.arguments').click(function(){
+	$('.arguments').click(function(){
 		
 		//Add argument text to the varible mainARgument, which is used to populate the argument later
 		mainArgument = $(this).text();
@@ -184,5 +200,9 @@ $(document).ready(function(){
     });
 
 
-	});	
+});	
+	
+	
+	
+
 
