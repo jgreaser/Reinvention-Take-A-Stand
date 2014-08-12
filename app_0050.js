@@ -109,11 +109,19 @@ function changeScreen(changeTo){
 	//PICK EVIDENCE FROM SOURCES
 
     $(".sourceEvidence").click(function(event) {
-		//increase evidence count
-        evidenceCount++;
-
 		//add evidence to supportingEvidence Array, using ID
-		supportingEvidence.push($(this).attr('id'));
+		
+		// Cache selected item
+		var item = $(this).attr('id');
+		
+		// Check if it already exists in he array before adding it.
+		if(supportingEvidence.indexOf(item) == -1){
+				// Add item to array
+				supportingEvidence.push(item);
+				//increase evidence count
+				evidenceCount++;
+		}
+	
 		
 		//add evidence to store       
 		//Maybe change this to a loop that redraws the supportingEvidnece span every time ?
