@@ -24,6 +24,7 @@ $(document).ready(function(){
 	// Set the initial Screen to display (function below)
 	changeScreen(currentScreen);
 
+//===================================================
 // Updates the current screen
 function changeScreen(changeTo){
 	// Hide current screen
@@ -48,10 +49,8 @@ function changeScreen(changeTo){
 	
 	//Listen for user to pick stance side
 	$('.chooseStanceArgument').click(function(){
-	
 		// cache argument
 		var stance = $(this).attr("data-stance");
-		
 		// Show confirm dialog
 		BootstrapDialog.confirm("You have chosen the "+stance+" stance, are you sure?",function(result){
 			if(result){
@@ -66,18 +65,22 @@ function changeScreen(changeTo){
 
 	//PICK ARGUMENT	
 	//listen for click on arguments
-	$('.arguments').click(function(){
+	$('.argumentLink').click(function(){
 		
 		//Add argument text to the varible mainARgument, which is used to populate the argument later
 		mainArgument = $(this).text();
 		$('.mainArgument').html("<p><b>" + mainArgument + "</b></p>");
 		
-//ADD HERE: Need to allow student to chose another argument. Just add a "yes need to change it" button that closes the dialog, but doesn't do anything else.
-		showDialog("Take a Stand!","Your main argument is: " + mainArgument,"confirmArgument", "chooseSources", "chooseArgument");
+		//ADD HERE: Need to allow student to chose another argument. Just add a "yes need to change it" button that closes the dialog, but doesn't do anything else.
+		BootstrapDialog.confirm("Your main argument is: "+mainArgument+", are you sure?",function(result){
+			if(result){
+				// If user chooses yes then...
+				stanceSide = $(this).data('stance');
+				changeScreen("chooseSources");
+			}
+		});
 		
-	
-	}
-	);
+	});
 	  
 
 
