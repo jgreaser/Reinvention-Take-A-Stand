@@ -84,22 +84,23 @@ $(document).ready(function(){
 
     $(".sourceEvidence").click(function(event) {
 		//increase evidence count
-        evidenceCount++
+        evidenceCount++;
 
+		//add evidence to supportingEvidence Array, using ID
+		supportingEvidence.push($(this).attr('id'));
+		
 		//add evidence to store       
-	    $('.supportingEvidence').append("<li>" + $(this).text() + "</li>");
-		
-		
-		//add evidnece to supportingEvidence Array
-		supportingEvidence.push($(this).text());
+		//Maybe change this to a loop that redraws the supportingEvidnece span every time ?
+	    $('.supportingEvidenceList').append("<li class='supportingEvidenceListItem'>" + $('#'+$(this).attr('id')).text() + "</li>");
 	
 		//Determine when to go to CHALLENGER
         if (evidenceCount == maxEvidence) {
 		alert('a challenger appears!');
 		showDialog("Take a Stand!","A challenger appears! Are you ready to take this one?","confirmArgument", "debate", "chooseSources");
-
         }
+		
     });
+	
 	
 	
 
@@ -116,14 +117,6 @@ $(document).ready(function(){
 
 	
 	
-
-
-
-	
-	
-
-	
-		
 		
 	$(".support").click(function(event) {
 
