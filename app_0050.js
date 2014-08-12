@@ -41,6 +41,7 @@ $(document).ready(function(){
 //===================================================
 // Updates the current screen
 function changeScreen(changeTo){
+	
 	// Hide current screen
 	$('#'+currentScreen).hide();
 	
