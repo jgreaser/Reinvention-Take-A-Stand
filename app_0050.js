@@ -18,14 +18,18 @@ $(document).ready(function(){
 	
 	var matchingEvidenceToArgument = [{
 		argument: 01,
-		matchingEvidence: ("tag_01", "tag_02", "tag_03", "tag_04", "tag05")
+		matchingEvidence: ("tag_01", "tag_02", "tag_03", "tag_04", "tag05"),
+		matchingCounterEvidence: ["tag_09", "tag_11", "tag_13"]		
 		},
 		{
 		argument: 02,
-		matchingEvidence: ("tag_04", "tag_05", "tag_06", "tag_07", "tag08")
+		matchingEvidence: ("tag_04", "tag_05", "tag_06", "tag_07", "tag08"),
+		matchingCounterEvidence: ["tag_09", "tag_11", "tag_13"]	
 		},
 		];//list all argument/source combinations here
 	var correctSourcesForArgument = [];//populate this array when the argument is picked
+	var counterEvidenceSourcesForArgument = [];
+
 
     var evidenceCount = 0;
 	var maxEvidence = 5;
@@ -34,6 +38,10 @@ $(document).ready(function(){
 	
 	var winningScore = 80;
 	var currentScore = 0;
+	
+	var debateThrowdownPlayerArray = [];
+	var debateThrowdownChallengerArray = [];
+	
 
 	// Set the initial Screen to display (function below)
 	changeScreen(currentScreen);
@@ -41,6 +49,7 @@ $(document).ready(function(){
 //===================================================
 // Updates the current screen
 function changeScreen(changeTo){
+	
 	// Hide current screen
 	$('#'+currentScreen).hide();
 	
@@ -82,6 +91,14 @@ function changeScreen(changeTo){
 	$('.argumentLink').click(function(){
 		
 		//Add argument text to the varible mainARgument, which is used to populate the argument later
+	
+		mainArgumentID = parseInt($(this).data('argumentid'));
+		//alert ("Evidence is " + counterEvidenceSourcesForArgument);
+	
+		var counterEvidenceSourcesForArgument = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence;//populate argument&counterargument arrays
+		alert ("Counter evidence is " + counterEvidenceSourcesForArgument);
+
+		
 		mainArgument = $(this).text();
 		$('.mainArgument').html("<p><b>" + mainArgument + "</b></p>");
 		
@@ -179,8 +196,8 @@ function changeScreen(changeTo){
   			
   			
 		});
-		
-		// add click event to item
+
+		// add click event to item in list
 		if(currentScreen == "chooseSources"){
 		  		$('.supportingEvidenceListItem').click(function(){
 			  		removeSupportingEvidenceItem($(this).attr('data-id'));
@@ -189,9 +206,11 @@ function changeScreen(changeTo){
 			 $('.supportingEvidenceListItemUse').click(function(){
 			  		addSourcetoDebate($(this).attr('data-id'));
 		  		});
-			 
 		 }
-		
+	}
+	
+	function buildCounterEvidenceList(){
+	//build the counter evidence list using counterEvidenceSourcesForArgument
 	}
 	
 	function removeSupportingEvidenceItem(id){
@@ -236,11 +255,29 @@ function changeScreen(changeTo){
 	//PLEASE MAKE THIS WORK
 	function addSourcetoDebate(id){
 		
+		
+		//check debateThrowdownPlayerArray to see if id exists, if not alert (you cant do that sucka!)
+		
+		//set value of "is it in array", -1 means it isn't in array
+		//cache isInArray
+		var isInArray = debateThrowdownPlayerArray.indexOf(id);
+		
+		if (isInArray == -1)
+		{
+		debateThrowdownPlayerArray.push(id);
+		alert('that is not in the array yet!');	
+		
 		// Cache Source
 		var source = $('#'+id).html();
 		
-		// Temp
-		$('#debateArea').append("<p class='alert alert-danger'>" + source + "</p>");
+		// add text to debate area
+		$('#debateArea').append("<p class='text-right alert alert-success'>" + source + "</p>");
+		}
+		
+		else {
+		//ADD DIALOG HERE
+		alert('you already played that');	
+		}
 		
 		/*
         //should it be left aligned or right aligned?

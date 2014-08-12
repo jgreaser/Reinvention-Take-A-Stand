@@ -11,7 +11,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href="css/theme.css" rel="stylesheet" />
 
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -20,10 +21,6 @@
     	<!-- http://nakupanda.github.io/bootstrap3-dialog/ -->
     </script>
     
-  
-     
-        
- 
     <style>
         .draggable {
             width: 90px;
@@ -55,53 +52,69 @@
 
     <div class="container">
 
-        <div id="index">
-            <h3>Choose your stance.</h3>
+        <div id="index" class="appsection">
+            <h1>Take a Stand!</h1>
             <div class="row panel panel-default">
-                <div class="col-md-4 panel panel-default">
-                    <h4 id="solarisbad">Solar is bad!</h4>
-
+                <div class="col-md-4 panel panel-default chooseBad">
+                    <h3 id="solarisbad">Solar is bad!</h3>
+					<a href="javascript:void(0);" class="btn btn-default">I choose to stand against solar power!</a>
                 </div>
-                <div id="origin" class="ui-widget-header col-md-4 panel panel-default">
+                <div id="origin" class="ui-widget-header col-md-4 panel panel-default avatar">
+                	 <h4>Choose your stance</h4>
                     <img src="images/avatar.png" alt="avatar" />
-                    <P>Choose your stance!</P>
+                    
                 </div>
-                <div id="good" class="drop ui-widget-header col-md-4 panel panel-default">
-                    <h4>Solar is good.</h4>
-                    <a href="javascript:void(0);" class="chooseStanceArgument" data-stance="pro">I choose to stand by solar power!</a>
+                <div id="good" class="drop ui-widget-header col-md-4 panel panel-default chooseGood">
+                    <h3>Solar is good.</h3>
+                    <a href="javascript:void(0);" class="chooseStanceArgument btn btn-primary" data-stance="pro">I choose to stand by solar power!</a>
                 </div>
             </div>
         </div>
-        <div id="chooseArgument">
-            <h3>Take a Stand!</h3>
+        
+        
+        
+        
+        
+        <div id="chooseArgument" class="appsection">
+            <h1>Take a Stand!</h1>
             <div class="row panel panel-default">
-                <div class="col-md-8 panel panel-default" id='arguments'>
+                <div class="col-md-8 panel panel-default" id='arguments' style="width:66.6%">
                     <h4>Main Argument</h4>
                     <p>What is the main argument that you plan to use...</p>
+<<<<<<< HEAD
                     <ul>
-                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink" id="argument01">Argument 1</a></li>
-                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink" id="argument02">Argument 2</a></li>
-                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink" id="argument03">Argument 3</a></li>
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink" id="argument01" data-argumentid="0">Argument 1</a></li>
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink" id="argument02" data-argumentid="1">Argument 2</a></li>
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink" id="argument03" data-argumentid="2">Argument 3</a></li>
+=======
+                    <ul class="list-unstyled argumentList">
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument01">This is a long argument just to act as an example.</a></li>
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument02">Argument 2</a></li>
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument03">Argument 3</a></li>
+>>>>>>> FETCH_HEAD
                     </ul>
                 </div>
-                <div class="col-md-4 panel panel-default stanceStore">
+                <div class="col-md-4 panel panel-default stanceStore showSelections">
                     <h4>Solar is good.</h4>
                     <img src="images/avatar.png" alt="avatar">
-                    <p>Select your main argument.</p>
-                    <div class="mainArgument"></div>
-
+                    <div class="mainArgument">   </div>
                 </div>
             </div>
         </div>
 
-        <div id="chooseSources">
-            <h3>Take a Stand!</h3>
+
+
+
+
+
+        <div id="chooseSources" class="appsection">
+            <h1>Take a Stand!</h1>
             <div class="row panel panel-default">
                 <div class="col-md-8 panel panel-default">
                     <h4>Support</h4>
                     <p>Explore expert opinions about solar energy. Read each source, then select parts you want to use as supports by dragging text over to your stance.</p>
                     <p>Select a source to begin.</p>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li><a href="#" data-target="#source01" class="sourceLink"> Source 1</a>
                         </li>
                         <li><a href="#" data-target="#source02" class="sourceLink"> Source 2</a>
@@ -111,9 +124,10 @@
                     </ul>
                 </div>
 
-                <div class="col-md-4 panel panel-default stanceStore">
+                <div class="col-md-4 panel panel-default stanceStore showSelections">
                     <h4>Solar is good.</h4>
                     <img src="images/avatar.png" alt="avatar">
+                    <br/><br/>
                     <p>Argument: <span class="mainArgument"></span>
                     </p>
                     <p>Supports:<br />
@@ -160,7 +174,7 @@
 
         </div>
 
-        <div id="challengerAppears">
+        <div id="challengerAppears" class="appsection">
             <h4>A Challenger Appears!</h4>
             <p>
                 <img src="images/challenger.jpg" alt="challenger">
@@ -171,7 +185,7 @@
         </div>
 
 
-        <div id="debate">
+        <div id="debate" class="appsection">
             <h3>Take a Stand!</h3>
             <div class="row panel panel-default">
                 <div class="col-md-4 panel panel-default">
