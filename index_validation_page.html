@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Template 0200 Choose a Side</title>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="handlebars-v1.3.0.js" type="text/javascript"></script>
+<script src="http://builds.emberjs.com/release/ember.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.8/ember-data.min.js"></script>
+<script src="data.js"></script>
+<script src="app_0050.js"></script>
+   <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+<style>
+  .draggable { width: 90px; height: 80px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em; }
+  .ui-widget-header p, .ui-widget-content p { margin: 0; }
+  #snaptarget { height: 140px; }
+  
+  .drag {
+  z-index: 1060;
+}
+  
+  .drop {
+  z-index: 0;
+}
+  
+  </style>
+
+
+</head>
+
+<body>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="beginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Take a Stand!</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{text}}</p>
+		<p>{{promptText}}</p>
+		
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="debate btn btn-default" data-debate="true">Yes!</button>
+        <button type="button" class="debate btn btn-default" data-debate="false">No.</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Choose your side.</h3>
+      <div class="row panel panel-default">
+        <div id="bad"  class="ui-widget-header col-md-4 panel panel-default"><h4>Solar is bad.</h4>
+		 <p><a href="#" onClick="alert('This option is not currently available.')">Solar, blegh.</a><br /><br /></p>
+		</div>
+        <div id="origin"  class="ui-widget-header col-md-4 panel panel-default"><img src="images/avatar.png" alt="avatar"/><P>Choose your stance!</P></div>
+        <div id="good"  class="drop ui-widget-header col-md-4 panel panel-default"><h4>Solar is good.</h4>
+				 <p><a href="#chooseArgument">Watchutalkin about?!? Solar is fancy!</a><br /><br /></p>
+</div>  
+	{{blog-post 
+	dataAttribute=debate 
+	text="There is a huge debate brewing around the use of solar energy. Some think its a great thing; others aren't so sure."
+	promptText="Are you ready to take a stand?"
+	}}
+
+      </div>
+  
+<h3>Take a Stand!</h3>
+      <div class="row panel panel-default">
+        <div class="col-md-8 panel panel-default" id='arguments'><h4>Main Argument</h4>
+		<p>What is the main argument that you plan to use...</p>
+		<ul>
+			<li class='arguments'>Argument 1</li>
+			<li class='arguments'>Argument 2</li>
+			<li class='arguments'>Argument 3</li>
+			</ul>
+		</div>
+		<div class="col-md-4 panel panel-default stanceStore"><h4>Solar is good.</h4>
+		<img src="images/avatar.png" alt="avatar"><p>Select your main argument.</p>
+        <div class="mainArgument"></div>
+		       
+      </div>
+      
+      
+      <!-- Modal -->
+<div class="modal fade" id="argumentConfirmModal" tabindex="-1" role="dialog" aria-labelledby="argumentConfirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="argumentConfirmModalLabel">Take a Stand!</h4>
+      </div>
+      <div class="modal-body">
+        <p>You picked this argument. </p>
+		<p>Ready to pick sources?</p>
+		
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="argumentConfirm btn btn-default" data-debate="true">Yes.</button>
+        <button type="button" class="argumentConfirm btn btn-default" data-debate="false">No, I would like to review my argument.</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+	{{blog-post 
+	dataAttribute=debate 
+	text="You picked this argument."
+	}}
+	
+	
+
+<h3>Take a Stand!</h3>
+      <div class="row panel panel-default">
+        <div class="col-md-8 panel panel-default"><h4>Support</h4>
+		<p>Explore expert opinions about solar energy. Read each source, then select parts you want to use as supports by dragging text over to your stance.</p>
+		<p>Select a source to begin.</p>
+		<ul>
+			<li><a href="#" data-toggle="modal"
+   data-target="#sourceModal_01"> Source 1</a></li>
+			<li><a href="#" data-toggle="modal"
+   data-target="#sourceModal_02"> Source 2</a></li>
+			<li><a href="#" data-toggle="modal"
+   data-target="#sourceModal_03"> Source 3</a></li>
+		</ul>
+		</div>
+        <div class="col-md-4 panel panel-default stanceStore">
+		<h4>Solar is good.</h4>
+	
+		<img src="images/avatar.png" alt="avatar">
+		<p><b>Argument: </b><span class="mainArgument"></span></p>
+		<p><b>Supports:</b></p>
+		</div>
+      </div>
+
+  </div>
+  <div class="row panel panel-default" id="source_one">
+
+		<div class="row">
+            <div class="col-md-8">
+            <p>Yadda yadda yadda. 
+			<span class="sourceEvidence" id="tag_01" data-keyword="pro01">Tagged content here supporting argument 1.</span>
+			 <span class="sourceEvidence" id="tag_02" data-keyword="pro02">More tagged content here supporting argument 2.</span>
+			 <span class="sourceEvidence" id="tag_03" data-keyword="none">Irrelevant tagged content here.</span></p>
+
+            </div>
+            <div class="col-md-4">
+		<p>Evidence you have collected:</p>
+		<ul class="modalEvidenceList">
+		
+		</ul>		
+            </div>		
+		</div>
+      </div>
+
+  
+  {{blog-post 
+	dataAttribute=debate 
+	text="I challenge you to a duel!."
+	promptText="Are you ready to debate this fine gentleman?"
+	}}
+
+  
+
+<h3>Take a Stand!</h3>
+      <div class="row panel panel-default">
+	    <div class="col-md-4 panel panel-default"><h4>Solar is bad!</h4>
+		 <p>
+		 <img src="images/challenger.jpg">
+		 </p>
+		<p>Solar energy is bad! Mehhh! HA HA HA HA!</p>
+		<ul>
+			<li class="support counter">Counter support 1</li>
+			<li class="support counter">Counter support 2</li>
+			<li class="support counter">Counter support 3</li>
+		</ul>
+		</div>
+		<div class="col-md-4 panel panel-default"><h4>Debate!</h4><div id="debateArea">   
+<a href="#" data-toggle="modal" data-target="#myModal">
+  Whenever anything is dropped, a scoring alert is triggered.
+</a></div></div>
+        <div class="col-md-4 panel panel-default"><h4>Solar is good.</h4>
+		<img src="images/avatar.png">
+        <p>Main argument here</p>
+        <ul>
+        <li class="support">support 1</li>
+        <li class="support">support 2</li>
+        <li class="support">support 3</li>
+        <li class="support">support 4</li>
+        <li class="support">support 5</li>
+        </ul>
+		</div>
+	  </div>
+
+
+
+<!-- Scoring Alert Modal -->
+<div class="modal fade" id="scoringConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Scoring Alert!</h4>
+      </div>
+      <div class="modal-body">
+		
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="scoringConfirmation btn btn-primary">Fine.</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  </body>
+</html>

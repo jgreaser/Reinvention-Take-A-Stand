@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Template 0200 Choose a Side</title>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="app_0050.js"></script>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-dialog.min.js">
+    	<!-- http://nakupanda.github.io/bootstrap3-dialog/ -->
+    </script>
+    
+  
+     
+        
+ 
+    <style>
+        .draggable {
+            width: 90px;
+            height: 80px;
+            padding: 5px;
+            float: left;
+            margin: 0 10px 10px 0;
+            font-size: .9em;
+        }
+        .ui-widget-header p,
+        .ui-widget-content p {
+            margin: 0;
+        }
+        #snaptarget {
+            height: 140px;
+        }
+        .drag {
+            z-index: 1060;
+        }
+        .drop {
+            z-index: 0;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="index">
+            <h3>Choose your stance.</h3>
+            <div class="row panel panel-default">
+                <div class="col-md-4 panel panel-default">
+                    <h4 id="solarisbad">Solar is bad!</h4>
+
+                </div>
+                <div id="origin" class="ui-widget-header col-md-4 panel panel-default">
+                    <img src="images/avatar.png" alt="avatar" />
+                    <P>Choose your stance!</P>
+                </div>
+                <div id="good" class="drop ui-widget-header col-md-4 panel panel-default">
+                    <h4>Solar is good.</h4>
+                    <p class="chooseStanceArgument">I choose to stand by solar power!
+                        <br />
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="chooseArgument">
+            <h3>Take a Stand!</h3>
+            <div class="row panel panel-default">
+                <div class="col-md-8 panel panel-default" id='arguments'>
+                    <h4>Main Argument</h4>
+                    <p>What is the main argument that you plan to use...</p>
+                    <ul>
+                        <li class='arguments'>Argument 1</li>
+                        <li class='arguments'>Argument 2</li>
+                        <li class='arguments'>Argument 3</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 panel panel-default stanceStore">
+                    <h4>Solar is good.</h4>
+                    <img src="images/avatar.png" alt="avatar">
+                    <p>Select your main argument.</p>
+                    <div class="mainArgument"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="chooseSources">
+            <h3>Take a Stand!</h3>
+            <div class="row panel panel-default">
+                <div class="col-md-8 panel panel-default">
+                    <h4>Support</h4>
+                    <p>Explore expert opinions about solar energy. Read each source, then select parts you want to use as supports by dragging text over to your stance.</p>
+                    <p>Select a source to begin.</p>
+                    <ul>
+                        <li><a href="#" data-target="#source01" class="sourceLink"> Source 1</a>
+                        </li>
+                        <li><a href="#" data-target="#source02" class="sourceLink"> Source 2</a>
+                        </li>
+                        <li><a href="#" data-target="#source03" class="sourceLink"> Source 3</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 panel panel-default stanceStore">
+                    <h4>Solar is good.</h4>
+                    <img src="images/avatar.png" alt="avatar">
+                    <p>Argument: <span class="mainArgument"></span>
+                    </p>
+                    <p>Supports:<br />
+                    <ul>
+                    <span class="supportingEvidence"></span>
+                    </ul>
+                    </p>
+                </div>
+
+            </div>
+            <div class="row panel panel-default">
+            
+                <div id="source01" class="sources">
+                    <h4>SOURCE 1</h4>
+                    <p>Yadda yadda yadda.
+                        <span class="sourceEvidence" id="tag_01" data-keyword="pro01">Tagged content here supporting argument 1.</span>
+                        <span class="sourceEvidence" id="tag_02" data-keyword="pro02">More tagged content here supporting argument 2.</span>
+                        <span class="sourceEvidence" id="tag_03" data-keyword="none">Irrelevant tagged content here.</span>
+                    </p>
+                </div>
+
+                <div id="source02" class="sources">
+                    <h4>SOURCE 2</h4>
+                    <p>Yadda yadda yadda. <span class="sourceEvidence" id="tag_07" data-keyword="pro01">Tagged content here supporting argument 1.</span> 
+                        <span class="sourceEvidence" id="tag_08" data-keyword="pro02">More tagged content here supporting argument 2.</span> 
+                        <span class="sourceEvidence" id="tag_09" data-keyword="none">Irrelevant tagged content here.</span>
+                    </p>
+
+                </div>
+                <div id="source03" class="sources">
+                    <h4>SOURCE 3</h4>
+                    <p>Yadda yadda yadda. <span class="sourceEvidence" id="tag_11" data-keyword="pro01">Tagged content here supporting argument 1.</span> 
+                        <span class="sourceEvidence" id="tag_12" data-keyword="pro02">More tagged content here supporting argument 2.</span> 
+                        <span class="sourceEvidence" id="tag_13" data-keyword="none">Irrelevant tagged content here.</span>
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div id="challengerAppears">
+            <h4>A Challenger Appears!</h4>
+            <p>
+                <img src="images/challenger.jpg" alt="challenger">
+            </p>
+            <p>Solar energy is bad! Mehhh! HA HA HA HA!</p>
+            <p>Get ready to defend your stance!</p>
+            <a href="#debate">Defend!</a>
+        </div>
+
+
+        <div id="debate">
+            <h3>Take a Stand!</h3>
+            <div class="row panel panel-default">
+                <div class="col-md-4 panel panel-default">
+                    <h4>Solar is bad!</h4>
+                    <p>
+                        <img src="images/challenger.jpg" alt="challenger">
+                    </p>
+                    <p>Solar energy is bad! Mehhh! HA HA HA HA!</p>
+                    <ul>
+                        <li class="support counter">Counter support 1</li>
+                        <li class="support counter">Counter support 2</li>
+                        <li class="support counter">Counter support 3</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 panel panel-default">
+                    <h4>Debate!</h4>
+                    <div id="debateArea">
+  Whenever anything is dropped, a scoring alert is triggered.
+
+                    </div>
+                </div>
+                <div class="col-md-4 panel panel-default">
+                    <h4>Solar is good.</h4>
+                    <img src="images/avatar.png" alt="avatar">
+                    <p>Main argument here</p>
+                    <ul>
+                        <li class="support">support 1</li>
+                        <li class="support">support 2</li>
+                        <li class="support">support 3</li>
+                        <li class="support">support 4</li>
+                        <li class="support">support 5</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="scoringAlert">
+            <h4>Scoring Alert!</h4>
+            <p>Some text.</p>
+            <button type="button" class="scoringConfirmation btn btn-primary">Fine.</button>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>

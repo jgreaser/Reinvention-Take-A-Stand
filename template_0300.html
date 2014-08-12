@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Template 0200 Choose a Side</title>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+<script src="data.js"></script>
+<script src="app_0050.js"></script>
+   <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+<h3>Take a Stand!</h3>
+      <div class="row panel panel-default">
+        <div class="col-md-8 panel panel-default" id='arguments'><h4>Main Argument</h4>
+		<p>What is the main argument that you plan to use...</p>
+		<ul>
+			<li class='arguments'>Argument 1</li>
+			<li class='arguments'>Argument 2</li>
+			<li class='arguments'>Argument 3</li>
+		</div>
+		<div class="col-md-4 panel panel-default" id="stanceStore"><h4>Solar is good.</h4><img src="images/avatar.png"><p>Select your main argument.<p>
+        <div class="mainArgument"></div></div>        
+      </div>
+      
+      
+      
+      <!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Take a Stand!</h4>
+      </div>
+      <div class="modal-body">
+        <p>You have chosen your argument:</p>
+        <div class="mainArgument"></div>
+        
+        <p> Would you like to continue now?</p>
+		
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="confirmation btn btn-default" data-continue="true">Yes, continue.</button>
+        <button type="button" class="confirmation btn btn-default" data-continue="false">No. I need to rethink my argument.</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+  </body>
+</html>
