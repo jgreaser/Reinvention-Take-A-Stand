@@ -133,13 +133,18 @@ function changeScreen(changeTo){
 	
 		//Determine when to go to CHALLENGER
         if (evidenceCount == maxEvidence) {
-		alert('a challenger appears!');
-			showDialog("Take a Stand!","A challenger appears! Are you ready to take this one?","confirmArgument", "debate", "chooseSources");
+		
+			BootstrapDialog.confirm("A challenger appears! Are you ready to take this one?",function(result){
+				if(result){
+					// If user chooses yes then...
+					changeScreen("debate");
+					// Update the debate Supports so that you can use them...
+					buildSupportingEvidenceList();
+				}
+			});
         }
 		
     });
-	
-	
 	
 	
 	
@@ -150,16 +155,29 @@ function changeScreen(changeTo){
 			// Cache title of source
 			var title = $('#'+value).html();
 			
-			// add list item
-  			$('.supportingEvidenceList').append("<li>"+title+" <a href='javascript:void(0);' data-id='"+value+"' class='supportingEvidenceListItem'>[x]</li>");
+			// add list item based on what screen you are on.
+			if(currentScreen == "chooseSources"){
+  				$('.supportingEvidenceList').append("<li>"+title+" <a href='javascript:void(0);' data-id='"+value+"' class='supportingEvidenceListItem'>[x]</li>");
+  				
+  			} else if(currentScreen == "debate"){
+	  			$('.supportingEvidenceList').append("<li>"+title+" <a href='javascript:void(0);' data-id='"+value+"' class='supportingEvidenceListItemUse'>[Use]</li>");
+  			}
   			
   			
 		});
 		
 		// add click event to item
-  		$('.supportingEvidenceListItem').click(function(){
-	  		removeSupportingEvidenceItem($(this).attr('data-id'));
-  		});
+		if(currentScreen == "chooseSources"){
+		  		$('.supportingEvidenceListItem').click(function(){
+			  		removeSupportingEvidenceItem($(this).attr('data-id'));
+		  		});
+		 } else {
+			 $('.supportingEvidenceListItemUse').click(function(){
+			  		addSourcetoDebate($(this).attr('data-id'));
+		  		});
+			 
+		 }
+		
 	}
 	
 	function removeSupportingEvidenceItem(id){
@@ -180,10 +198,6 @@ function changeScreen(changeTo){
     });
 
 	
-	
-
-	
-
 	//THIS IS THE ORIGINAL "throwdown" code - still works for the challenger
 	$(".support").click(function(event) {
 
@@ -206,9 +220,15 @@ function changeScreen(changeTo){
 	
 	//THIS IS THE NEW THROWDOWN CODE 
 	//PLEASE MAKE THIS WORK
-	$(".supportingEvidenceListItem").click(function(event) {
-
-
+	function addSourcetoDebate(id){
+		
+		// Cache Source
+		var source = $('#'+id).html();
+		
+		// Temp
+		$('#debateArea').append("<p class='alert alert-danger'>" + source + "</p>");
+		
+		/*
         //should it be left aligned or right aligned?
         if ($(this).hasClass("counter")) {
             $('#debateArea').append("<p class='alert alert-danger'>" + $(this).text() + "</p>");
@@ -221,9 +241,10 @@ function changeScreen(changeTo){
 		          //SHOW SCORE DIALOG
 
         }
+        */
 
         //SHOW SCORE DIALOG
-    });
+    }
 
 
     //1000 confirmation score modal
