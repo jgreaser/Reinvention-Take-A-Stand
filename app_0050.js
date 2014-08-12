@@ -34,11 +34,18 @@ $(document).ready(function(){
 	
 	//Listen for user to pick stance side
 	$('.chooseStanceArgument').click(function(){
-		showDialog("Take a Stand!","You have chosen to defend solar!","confirmArgument", "chooseArgument", "index");
-		stanceSide = $(this).data('stance');
-		alert(stanceSide);
-	}
-	);
+	
+		// cache argument
+		var stance = $(this).attr("data-stance");
+		
+		// Show confirm dialog
+		BootstrapDialog.confirm("You have chosen the "+stance+" stance, are you sure?",function(result){
+			if(result){
+				stanceSide = $(this).data('stance');
+			}
+		});
+		
+	});
 
 
 	//PICK ARGUMENT	

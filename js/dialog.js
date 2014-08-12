@@ -47,18 +47,19 @@ function showScore(score){
 // used when you want to confirm something
 function showConfirmDialog(title,message){
 	
-	BootstrapDialog.show({
+	BootstrapDialog.confirm({
 		title:title,
 		message:message,
+		type:'type-default',
 		buttons:[{
-			label:"Yes",
-			action:function(dialog){
-				return false;
-				dialog.close();
-			},
 			label:"No",
 			action:function(dialog){
-				return true;
+				dialog.close();
+			}
+			},
+			{
+			label:"Yes",
+			action:function(dialog){
 				dialog.close();
 			}
 		}]
