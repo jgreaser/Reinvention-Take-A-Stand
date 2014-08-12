@@ -91,7 +91,11 @@ $(document).ready(function(){
 		
 		//add evidence to store       
 		//Maybe change this to a loop that redraws the supportingEvidnece span every time ?
-	    $('.supportingEvidenceList').append("<li class='supportingEvidenceListItem'>" + $('#'+$(this).attr('id')).text() + "</li>");
+		//loop through supporting evidnece array, for each item add li class=supportingEvidenceListehalalal
+		
+		buildSupportingEvidenceList();
+		
+	    //$('.supportingEvidenceList').append("<li class='supportingEvidenceListItem'>" + $('#'+$(this).attr('id')).text() + "</li>");
 	
 		//Determine when to go to CHALLENGER
         if (evidenceCount == maxEvidence) {
@@ -102,6 +106,14 @@ $(document).ready(function(){
     });
 	
 	
+	function buildSupportingEvidenceList(){
+		$('.supportingEvidenceList').html('');
+		
+		$.each( supportingEvidence, function(key, value) 
+			{
+  			$('.supportingEvidenceList').append("<li class='supportingEvidenceListItem'>" + value + "</li>");
+			});
+	}
 	
 
 
@@ -115,10 +127,29 @@ $(document).ready(function(){
 
 	
 
-	
-	
-		
+	//THIS IS THE ORIGINAL "throwdown" code - still works for the challenger
 	$(".support").click(function(event) {
+
+
+        //should it be left aligned or right aligned?
+        if ($(this).hasClass("counter")) {
+            $('#debateArea').append("<p class='alert alert-danger'>" + $(this).text() + "</p>");
+           // $('.modal-body').text("Challenger source is valid, you lose 10 points!");
+		           //SHOW SCORE DIALOG
+
+        } else {
+            $('#debateArea').append("<p class='text-right alert alert-success'>" + $(this).text() + "</p>");
+          //  $('.modal-body').text("Bam! Good source! 20 points to you!");
+		          //SHOW SCORE DIALOG
+
+        }
+
+        //SHOW SCORE DIALOG
+    });
+	
+	//THIS IS THE NEW THROWDOWN CODE 
+	//PLEASE MAKE THIS WORK
+	$(".supportingEvidenceListItem").click(function(event) {
 
 
         //should it be left aligned or right aligned?
