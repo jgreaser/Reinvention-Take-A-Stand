@@ -1,5 +1,5 @@
 //DIALOG STUFF HERE, YO!   
-    function showDialog(title,message,buttons,targetDivName,leavingDivName){
+function showDialog(title,message,buttons,targetDivName,leavingDivName){
        	 	var okButtons = [];
         	if(buttons == "buttons1"){
 			
@@ -30,7 +30,8 @@
 	        });
 	        
         }
-        function showScore(score){
+        
+function showScore(score){
 	        BootstrapDialog.show({
 	            title: 'Score',
 	            message: 'Your score is' + score + '!',
@@ -41,4 +42,27 @@
 	                }
 	            }]
 	        });
-        }
+}
+
+// used when you want to confirm something
+function showConfirmDialog(title,message){
+	
+	BootstrapDialog.show({
+		title:title,
+		message:message,
+		buttons:[{
+			label:"Yes",
+			action:function(dialog){
+				return false;
+				dialog.close();
+			},
+			label:"No",
+			action:function(dialog){
+				return true;
+				dialog.close();
+			}
+		}]
+	});
+	
+	
+}
