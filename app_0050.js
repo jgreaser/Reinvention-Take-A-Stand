@@ -15,11 +15,25 @@ $(document).ready(function(){
 
 	var	mainArgument = '';
 	var supportingEvidence = [];
+	
+	var matchingEvidenceToArgument = [{
+		argument: 01,
+		matchingEvidence: ("tag_01", "tag_02", "tag_03", "tag_04", "tag05")
+		},
+		{
+		argument: 02,
+		matchingEvidence: ("tag_04", "tag_05", "tag_06", "tag_07", "tag08")
+		},
+		];//list all argument/source combinations here
+	var correctSourcesForArgument = [];//populate this array when the argument is picked
 
     var evidenceCount = 0;
 	var maxEvidence = 5;
 	
 	var currentScreen = "index"; // What is the current screen the app is on?
+	
+	var winningScore = 80;
+	var currentScore = 0;
 
 	// Set the initial Screen to display (function below)
 	changeScreen(currentScreen);
@@ -246,6 +260,14 @@ function changeScreen(changeTo){
         //SHOW SCORE DIALOG
     }
 
+function calculatePlayerScore(sourceID){
+	//does source ID match main argument ID?
+}
+
+function calculateChallengerScore(sourceID){
+	//does source ID match
+}
+	
 
     //1000 confirmation score modal
     $(".btn.scoringConfirmation").click(function(event) {
