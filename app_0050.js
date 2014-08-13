@@ -32,9 +32,11 @@ $(document).ready(function(){
 
 
     var evidenceCount = 0;
-	var maxEvidence = 5;
+	var maxEvidence = 1;
 	
 	var currentScreen = "index"; // What is the current screen the app is on?
+	
+	var throwDownSourcesPlayed = 0;
 	
 	var winningScore = 80;
 	var currentScore = 0;
@@ -98,7 +100,7 @@ function changeScreen(changeTo){
 		//alert ("Evidence is " + counterEvidenceSourcesForArgument);
 	
 		var counterEvidenceSourcesForArgument = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence;//populate argument&counterargument arrays
-		alert ("Counter evidence is " + counterEvidenceSourcesForArgument);
+		alert ("Counter evidence is " + counterEvidenceSourcesForArgument[throwDownSourcesPlayed]);
 
 		
 		mainArgument = $(this).text();
@@ -182,6 +184,10 @@ function changeScreen(changeTo){
 	
 	
 	function buildSupportingEvidenceList(){
+		
+		alert("Build supporting list, inside if isninarray" + counterEvidenceSourcesForArgument);
+
+
 		$('.supportingEvidenceList').html('');
 		
 		$.each( supportingEvidence, function(key, value) {
@@ -253,50 +259,56 @@ function changeScreen(changeTo){
         //SHOW SCORE DIALOG
     });
 	
-	//THIS IS THE NEW THROWDOWN CODE 
-	//PLEASE MAKE THIS WORK
+	
+	//HROWDOWN CODE 
 	function addSourcetoDebate(id){
 		
 		
 		//check debateThrowdownPlayerArray to see if id exists, if not alert (you cant do that sucka!)
 		
-		//set value of "is it in array", -1 means it isn't in array
-		//cache isInArray
-		var isInArray = debateThrowdownPlayerArray.indexOf(id);
+		var isInArray = debateThrowdownPlayerArray.indexOf(id);//cache isInArray -1 means it isn't in array
 		
-		if (isInArray == -1)
+		if (isInArray == -1) //ie, if evidence isn't already in the 'stuff you've played' array, aka debateThrowDownPlayerArray
 		{
-		debateThrowdownPlayerArray.push(id);
-		
-		// Cache Source
-		var source = $('#'+id).html();
-		
-		// add text to debate area
-		$('#debateArea').append("<p class='text-right alert alert-success'>" + source + "</p>");
+			alert("add sources to debate, inside if isninarray" + counterEvidenceSourcesForArgument);
+
+			
+		throwDownSourcesPlayed++;
+		addPlayerEvidence(id);		//adds player evidence, 
+		addChallengerEvidence();
 		}
 		
 		else {
 		//ADD DIALOG HERE
-		alert('you already played that');	
+		alert('You already played that, kind sir or madam.');	
 		}
 		
-		/*
-        //should it be left aligned or right aligned?
-        if ($(this).hasClass("counter")) {
-            $('#debateArea').append("<p class='alert alert-danger'>" + $(this).text() + "</p>");
-           // $('.modal-body').text("Challenger source is valid, you lose 10 points!");
-		           //SHOW SCORE DIALOG
-
-        } else {
-            $('#debateArea').append("<p class='text-right alert alert-success'>" + $(this).text() + "</p>");
-          //  $('.modal-body').text("Bam! Good source! 20 points to you!");
-		          //SHOW SCORE DIALOG
-
-        }
-        */
-
-        //SHOW SCORE DIALOG
+	
     }
+	
+//trigger opponent action
+		function addPlayerEvidence(id){
+		
+		debateThrowdownPlayerArray.push(id);
+		
+		var source = $('#'+id).html();		// Cache Source
+		
+		$('#debateArea').append("<p class='text-right alert alert-success'>" + source + "</p>");// add text to debate area
+		
+		alert("add player evidence" + counterEvidenceSourcesForArgument);
+
+		}
+		
+// player throwdown - adds text, updateds array, etc.
+function addChallengerEvidence(){
+		
+	
+		
+		alert("add challenger evidence" + counterEvidenceSourcesForArgument);
+		$('#debateArea').append("<p class='alert alert-danger'>" + counterEvidenceSourcesForArgument[throwDownSourcesPlayed] + "</p>");
+		}
+		
+	
 
 function calculatePlayerScore(sourceID){
 	//does source ID match main argument ID?
