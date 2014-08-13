@@ -7,6 +7,7 @@ $(document).ready(function() {
     $("#chooseSources").hide();
     $("#challengerAppears").hide();
     $("#debate").hide();
+    $("#debateEnds").hide();
     $("#scoringAlert").hide();
 
 
@@ -164,12 +165,9 @@ $(document).ready(function() {
 
 
         //add evidence to store       
-        //Maybe change this to a loop that redraws the supportingEvidnece span every time ?
-        //loop through supporting evidnece array, for each item add li class=supportingEvidenceListehalalal
-
+    
         buildSupportingEvidenceList();
 
-        //$('.supportingEvidenceList').append("<li class='supportingEvidenceListItem'>" + $('#'+$(this).attr('id')).text() + "</li>");
 
         //Determine when to go to CHALLENGER
         if (evidenceCount == maxEvidence) {
@@ -266,7 +264,6 @@ $(document).ready(function() {
         if (isInArray == -1) //ie, if evidence isn't already in the 'stuff you've played' array, aka debateThrowDownPlayerArray
         {
 
-
             throwDownSourcesPlayed++;
             calculatePlayerScore(id);
 
@@ -277,21 +274,17 @@ $(document).ready(function() {
 
             //DELAY THIS
             addChallengerEvidence();
-            //var setDelay=setInterval(function(){myTimer()},3000);
-            //function myTimer() {
-            //addChallengerEvidence();
+
             updateScore();
             //	}
             //clearInterval(setDelay);//clear the timeout
 
         } else {
-            //ADD DIALOG HERE
             showDialog("Take a Stand!", "You have already played that source.", "justContinue");
 
-            // alert('You already played that, kind sir or madam.');
         }
-
-
+        //NEEDS TO BE AT VERY END
+        isDebateOver();
     }
 
     function updateScore() {
@@ -318,8 +311,6 @@ $(document).ready(function() {
         //add the first counter evidence source to the screen
         var challengerSourceID = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence[throwDownSourcesPlayed - 1]; //cache challenger source ID
 
-
-
         var source = $('#' + challengerSourceID).html(); // Cache Source Text
         $('#debateArea').append("<p class='alert alert-danger'>" + source + "</p>");
 
@@ -330,10 +321,6 @@ $(document).ready(function() {
 
 
     function calculatePlayerScore(sourceID) {
-
-
-
-
         //showscore has to handle text, score, and the function to call after - if it's player, it will call the challenger. If it's challenger, it doesn't have followup function
         if ($.inArray(sourceID, matchingEvidenceToArgument[mainArgumentID].matchingEvidence) > -1) {
             currentScore += scoreMatchingStanceMatchingArgument;
@@ -347,7 +334,6 @@ $(document).ready(function() {
             showScore("This source supports your stance, but it doesn't doesn't match argument.", scoreMatchingStance);
         }
     }
-
 
 
     function calculateChallengerScore(sourceID) {
@@ -364,14 +350,41 @@ $(document).ready(function() {
     }
 
 
+    function isDebateOver() {
+
+        if (throwDownSourcesPlayed == maxEvidence) {
+            alert("it's over, yo!");
+
+            changeScreen("debateEnds");
+            provideFeedback();
+        }
+
+    }
+
+//Feedback in debate scoring window
+    function provideFeedback() {
+        if (currentScore > winningScore) {
+            $('#finalCurrentScore').html(currentScore);
+            $('#finalWinningScore').html(winningScore);
+            $('#finalFeedback').html("That's great, you won.");
+            $('#restartLink').html('Play again if you want.');
+        } else if (currentScore == winningScore) {
+            $('#finalCurrentScore').html(currentScore);
+            $('#finalWinningScore').html(winningScore);
+            $('#finalFeedback').html("It's a tie!");
+            $('#restartLink').html('That was close! Improve your score!');
+
+        } else if (currentScore < winningScore) {
+            $('#finalCurrentScore').html(currentScore);
+            $('#finalWinningScore').html(winningScore);
+            $('#finalFeedback').html("Not the winning condition, unfortunately. You should keep trying.");
+            $('#restartLink').html('Improve your score, take down this challenger.');
+
+        }
 
 
-    //1000 confirmation score modal
-    $(".btn.scoringConfirmation").click(function(event) {
+    }
 
-        $('#scoringConfirmationModal').modal('toggle');
-
-    });
 
 
 });

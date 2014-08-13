@@ -8,20 +8,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <script src="app_0050.js"></script>
-	<script src="js/dialog.js"></script>
+    <script src="js/dialog.js"></script>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
-	<link href="css/theme.css" rel="stylesheet" />
+    <link href="css/theme.css" rel="stylesheet" />
 
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootstrap-dialog.min.js">
-    	<!-- http://nakupanda.github.io/bootstrap3-dialog/ -->
+        <!-- http://nakupanda.github.io/bootstrap3-dialog/ -->
     </script>
-    
+
     <style>
         .draggable {
             width: 90px;
@@ -58,12 +58,12 @@
             <div class="row panel panel-default">
                 <div class="col-md-4 panel panel-default chooseBad">
                     <h3 id="solarisbad">Solar is bad!</h3>
-					<a href="javascript:void(0);" class="btn btn-default">I choose to stand against solar power!</a>
+                    <a href="javascript:void(0);" class="btn btn-default">I choose to stand against solar power!</a>
                 </div>
                 <div id="origin" class="ui-widget-header col-md-4 panel panel-default avatar">
-                	 <h4>Choose your stance</h4>
+                    <h4>Choose your stance</h4>
                     <img src="images/avatar.png" alt="avatar" />
-                    
+
                 </div>
                 <div id="good" class="drop ui-widget-header col-md-4 panel panel-default chooseGood">
                     <h3>Solar is good.</h3>
@@ -71,11 +71,11 @@
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        
+
+
+
+
+
         <div id="chooseArgument" class="appsection">
             <h1>Take a Stand!</h1>
             <div class="row panel panel-default">
@@ -84,20 +84,22 @@
                     <p>What is the main argument that you plan to use...</p>
 
                     <ul class="list-unstyled argumentList">
-                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument01" data-argumentid="0">This is a long argument just to act as an example.</a></li>
-                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument02" data-argumentid="1">Argument 2</a></li>
-                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument03" data-argumentid="2">Argument 3</a></li>
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument01" data-argumentid="0">This is a long argument just to act as an example.</a>
+                        </li>
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument02" data-argumentid="1">Argument 2</a>
+                        </li>
+                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument03" data-argumentid="2">Argument 3</a>
+                        </li>
 
                     </ul>
                 </div>
                 <div class="col-md-4 panel panel-default stanceStore showSelections">
                     <h4>Solar is good.</h4>
                     <img src="images/avatar.png" alt="avatar">
-                    <div class="mainArgument">   </div>
+                    <div class="mainArgument"></div>
                 </div>
             </div>
         </div>
-
 
 
 
@@ -109,7 +111,8 @@
                 <div class="col-md-8 panel panel-default">
                     <h4>Support</h4>
                     <p>Explore expert opinions about solar energy. Read each source, then select parts you want to use as supports by dragging text over to your stance.</p>
-                    <p><strong>Select a source to begin.</strong></p>
+                    <p><strong>Select a source to begin.</strong>
+                    </p>
                     <ul class="list-unstyled argumentList">
                         <li><a href="#" data-target="#source01" class="sourceLink btn btn-primary"> Source 1</a>
                         </li>
@@ -123,19 +126,21 @@
                 <div class="col-md-4 panel panel-default stanceStore showSelections">
                     <h4>Solar is good.</h4>
                     <img src="images/avatar.png" alt="avatar">
-                    <br/><br/>
+                    <br/>
+                    <br/>
                     <p>Argument: <span class="mainArgument"></span>
                     </p>
-                    <p>Supports:<br />
-                    <ul>
-                    <span class="supportingEvidenceList"></span>
-                    </ul>
+                    <p>Supports:
+                        <br />
+                        <ul>
+                            <span class="supportingEvidenceList"></span>
+                        </ul>
                     </p>
                 </div>
 
             </div>
             <div class="row panel panel-default">
-            
+
                 <div id="source01" class="sources">
                     <h4>SOURCE 1</h4>
                     <p>Yadda yadda yadda.
@@ -147,8 +152,8 @@
 
                 <div id="source02" class="sources">
                     <h4>SOURCE 2</h4>
-                    <p>Yadda yadda yadda. 
-                    	<a href="javascript:void(0);" class="sourceEvidence" id="tag_04" data-keyword="pro04">Pro argument 2,1.</a> 
+                    <p>Yadda yadda yadda.
+                        <a href="javascript:void(0);" class="sourceEvidence" id="tag_04" data-keyword="pro04">Pro argument 2,1.</a> 
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_05" data-keyword="pro05">Pro argument 2,2.</a> 
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_06" data-keyword="pro06">Pro argument 2,3.</a>
                     </p>
@@ -156,8 +161,8 @@
                 </div>
                 <div id="source03" class="sources">
                     <h4>SOURCE 3</h4>
-                    <p>Yadda yadda yadda. 
-                    	<a href="javascript:void(0);" class="sourceEvidence" id="tag_11" data-keyword="con11">Con argument 1,1.</a> 
+                    <p>Yadda yadda yadda.
+                        <a href="javascript:void(0);" class="sourceEvidence" id="tag_11" data-keyword="con11">Con argument 1,1.</a> 
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_12" data-keyword="con12">Con argument 2,1.</a> 
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_13" data-keyword="con13">Con argument 3,1.</a>
                     </p>
@@ -181,6 +186,15 @@
         </div>
 
 
+
+        <div id="debateEnds" class="appsection">
+            <h4>Take a Stand</h4>
+            <p>You scored <span id="finalCurrentScore"></span> out of a possible <span id="finalWinningScore"></span>.</p>
+            <p id="finalFeedback"></p>
+            <a href="index.html" id="restartLink"></a>
+        </div>
+
+
         <div id="debate" class="appsection">
             <h3>Take a Stand!</h3>
             <div class="row panel panel-default">
@@ -189,27 +203,29 @@
                     <p>
                         <img src="images/challenger.jpg" alt="challenger">
                     </p>
-                    <p>Supports:<br />
-                    <ul>
-                    <span class="counterSupportingEvidenceList"></span>
-                    </ul>
+                    <p>Supports:
+                        <br />
+                        <ul>
+                            <span class="counterSupportingEvidenceList"></span>
+                        </ul>
                     </p>
                 </div>
                 <div class="col-md-4 panel panel-default">
                     <h4>Debate!</h4>
                     <div id="debateArea">
-					<p><b>Score: </b><span id="currentScore"></span>/<span id="winningScore"></span>
+                        <p><b>Score: </b><span id="currentScore"></span>/<span id="winningScore"></span>
                     </div>
                 </div>
-               <div class="col-md-4 panel panel-default stanceStore">
+                <div class="col-md-4 panel panel-default stanceStore">
                     <h4>Solar is good.</h4>
                     <img src="images/avatar.png" alt="avatar">
                     <p>Argument: <span class="mainArgument"></span>
                     </p>
-                    <p>Supports:<br />
-                    <ul>
-                    <span class="supportingEvidenceList"></span>
-                    </ul>
+                    <p>Supports:
+                        <br />
+                        <ul>
+                            <span class="supportingEvidenceList"></span>
+                        </ul>
                     </p>
                 </div>
             </div>
@@ -219,6 +235,8 @@
             <p>Some text.</p>
             <button type="button" class="scoringConfirmation btn btn-primary">Fine.</button>
         </div>
+
+
     </div>
     </div>
     </div>
