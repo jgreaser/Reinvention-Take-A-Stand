@@ -97,7 +97,6 @@ function changeScreen(changeTo){
 		//Add argument text to the varible mainARgument, which is used to populate the argument later
 	
 		mainArgumentID = parseInt($(this).data('argumentid'));
-		//alert ("Evidence is " + counterEvidenceSourcesForArgument);
 	
 		var counterEvidenceSourcesForArgument = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence;//populate argument&counterargument arrays
 		alert ("Counter evidence is " + counterEvidenceSourcesForArgument[throwDownSourcesPlayed]);
@@ -184,8 +183,6 @@ function changeScreen(changeTo){
 	
 	
 	function buildSupportingEvidenceList(){
-		
-		alert("Build supporting list, inside if isninarray" + counterEvidenceSourcesForArgument);
 
 
 		$('.supportingEvidenceList').html('');
@@ -270,7 +267,6 @@ function changeScreen(changeTo){
 		
 		if (isInArray == -1) //ie, if evidence isn't already in the 'stuff you've played' array, aka debateThrowDownPlayerArray
 		{
-			alert("add sources to debate, inside if isninarray" + counterEvidenceSourcesForArgument);
 
 			
 		throwDownSourcesPlayed++;
@@ -295,16 +291,13 @@ function changeScreen(changeTo){
 		
 		$('#debateArea').append("<p class='text-right alert alert-success'>" + source + "</p>");// add text to debate area
 		
-		alert("add player evidence" + counterEvidenceSourcesForArgument);
-
 		}
 		
 // player throwdown - adds text, updateds array, etc.
 function addChallengerEvidence(){
 		
-	
-		
-		alert("add challenger evidence" + counterEvidenceSourcesForArgument);
+		//add the first counter evidence source to the screen
+		alert("this doesn't work at line 300, but it does work at 102 " + counterEvidenceSourcesForArgument[throwDownSourcesPlayed]);
 		$('#debateArea').append("<p class='alert alert-danger'>" + counterEvidenceSourcesForArgument[throwDownSourcesPlayed] + "</p>");
 		}
 		
