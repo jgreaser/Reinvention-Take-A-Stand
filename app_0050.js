@@ -18,12 +18,12 @@ $(document).ready(function(){
 	
 	var matchingEvidenceToArgument = [{
 		argument: 01,
-		matchingEvidence: ("tag_01", "tag_02", "tag_03", "tag_04", "tag05"),
+		matchingEvidence: ["tag_01", "tag_02", "tag_03", "tag_04", "tag05"],
 		matchingCounterEvidence: ["tag_09", "tag_11", "tag_13"]		
 		},
 		{
 		argument: 02,
-		matchingEvidence: ("tag_04", "tag_05", "tag_06", "tag_07", "tag08"),
+		matchingEvidence: ["tag_04", "tag_05", "tag_06", "tag_07", "tag08"],
 		matchingCounterEvidence: ["tag_09", "tag_11", "tag_13"]	
 		},
 		];//list all argument/source combinations here
@@ -41,6 +41,8 @@ $(document).ready(function(){
 	
 	var debateThrowdownPlayerArray = [];
 	var debateThrowdownChallengerArray = [];
+	
+	var challengerIsHere = false;//this is for treating screens differently depending on whether debate has started
 	
 
 	// Set the initial Screen to display (function below)
@@ -67,7 +69,7 @@ function changeScreen(changeTo){
 	//PICK SIDE
 	//solar is bad - not allowed - error message
 	$('#solarisbad').click(function(){
-		alert("Sorry, that hasn't been build yet. But it's also a fascinating argument worthy of explorations. Just not one that has been produced for this prototype.");
+		alert("Sorry, that hasn't been built yet. But it's also a fascinating argument worthy of explorations. Just not one that has been produced for this prototype.");
 		});
 	
 	//Listen for user to pick stance side
@@ -265,7 +267,6 @@ function changeScreen(changeTo){
 		if (isInArray == -1)
 		{
 		debateThrowdownPlayerArray.push(id);
-		alert('that is not in the array yet!');	
 		
 		// Cache Source
 		var source = $('#'+id).html();
