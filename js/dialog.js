@@ -1,6 +1,16 @@
 //DIALOG STUFF HERE, YO!   
 function showDialog(title,message,buttons,targetDivName,leavingDivName){
        	 	var okButtons = [];
+
+        	if(buttons == "justContinue"){
+			
+			okButtons = [{
+	                label: 'Continue',
+	                action: function(dialog) {
+	                    dialog.close();
+	                }
+	            }];
+	         }
         	if(buttons == "buttons1"){
 			
 			okButtons = [{
@@ -31,14 +41,17 @@ function showDialog(title,message,buttons,targetDivName,leavingDivName){
 	        
         }
         
-function showScore(score){
-	        BootstrapDialog.show({
+function showScore(message, score){
+	
+		
+	        BootstrapDialog.show(
+			{
 	            title: 'Score',
-	            message: 'Your score is' + score + '!',
+	            message: message + ' Your score is ' + score + '!',
 	            buttons: [{
 	                label: 'Thanks!',
 	                action: function(dialog) {
-	                    dialog.close();
+					    dialog.close();
 	                }
 	            }]
 	        });
