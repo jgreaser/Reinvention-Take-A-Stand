@@ -37,7 +37,7 @@ $(document).ready(function() {
 
     var throwDownSourcesPlayed = 0;
 
-    var winningScore = 80;
+    var winningScore = 20;
     var currentScore = 0;
 
     var scoreMatchingStanceMatchingArgument = 20;
