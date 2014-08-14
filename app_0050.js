@@ -172,7 +172,7 @@ $(document).ready(function() {
         //Determine when to go to CHALLENGER
         if (evidenceCount == maxEvidence) {
 
-            BootstrapDialog.confirm("A challenger appears! Are you ready to take this one?", function(result) {
+            BootstrapDialog.confirm("A challenger appears! But you can only bring " + maxEvidence + " sources to the debate. Are you comfortable with your choices?", function(result) {
                 if (result) {
                     // If user chooses yes then...
                     changeScreen("debate");

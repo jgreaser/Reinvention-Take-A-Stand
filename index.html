@@ -88,8 +88,8 @@
                         </li>
                         <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument02" data-argumentid="1">Solar energy is better for the environment.</a>
                         </li>
-                        <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument03" data-argumentid="2">Solar energy encourages economic development.</a>
-                        </li>
+                    <!--   <li class='arguments'><a href="javascript:void(0);" class="argumentLink btn btn-primary" id="argument03" data-argumentid="2">Solar energy encourages economic development.</a>
+                        </li>-->
 
                     </ul>
                 </div>
@@ -114,12 +114,9 @@
                     <p><strong>Select a source to begin.</strong>
                     </p>
                     <ul class="list-unstyled argumentList">
-                        <li><a href="#" data-target="#source01" class="sourceLink btn btn-primary"> Source 1</a>
-                        </li>
-                        <li><a href="#" data-target="#source02" class="sourceLink btn btn-primary"> Source 2</a>
-                        </li>
-                        <li><a href="#" data-target="#source03" class="sourceLink btn btn-primary"> Source 3</a>
-                        </li>
+                        <li><a href="#" data-target="#source01" class="sourceLink btn btn-primary"><i>Solar Green(backs)</i> by Mendel Gonzalez</a></li>
+                        <li><a href="#" data-target="#source02" class="sourceLink btn btn-primary"><i>Bright Sun, Bright Future</i> by Wendy Jones</a></li>
+                        <li><a href="#" data-target="#source03" class="sourceLink btn btn-primary"><i>Grey Skies for Solar Energy</i> by Herman McFunnelweather</a></li>
                     </ul>
                 </div>
 
@@ -142,14 +139,14 @@
             <div class="row panel panel-default">
 
                 <div id="source01" class="sources">
-                    <h4>SOURCE 1</h4>
+                    <h4><i>Solar Green(backs)</i> by Mendel Gonzalez</h4>
                     <p>The sun has produced energy for billions of years.  Solar energy is the sun’s rays (solar radiation) that reach the Earth. This energy can be converted into other forms of energy, such as heat and electricity. 
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_01" data-keyword="pro01">Solar energy only costs $5 to install.</a> Not only that,  <a href="javascript:void(0);" class="sourceEvidence" id="tag_02" data-keyword="pro02">the sun's light is free to collect.</a> Because solar energy requires fewer moving parts, <a href="javascript:void(0);" class="sourceEvidence" id="tag_03" data-keyword="pro03">solar energy infrastructure costs less to maintain than fossil fuel instrastructure.</a>
                     </p>
                 </div>
 
                 <div id="source02" class="sources">
-                    <h4>SOURCE 2</h4>
+                    <h4><i>Bright Sun, Bright Future</i> by Wendy Jones</h4>
                     <p>There are several reasons to invest in solar energy. First of all, 
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_04" data-keyword="pro04">once you have equipment setup, there is almost zero waste produced by solar systems. </a> Another overlooked result of solar is that 
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_05" data-keyword="pro05">solar systems let you produce power on site, limiting the amount of power lines and other infrastructure needed—which reduces the environmental impact.</a> Of course, we all know that 
@@ -158,7 +155,7 @@
 
                 </div>
                 <div id="source03" class="sources">
-                    <h4>SOURCE 3</h4>
+                    <h4><i>Grey Skies for Solar Energy</i> by Herman McFunnelweather</h4>
                     <p>Solar is bad, ok? Here are just a few reasons. You may think that solar is green, but 
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_11" data-keyword="con11">the very expensive systems rely on batteries that have a massive environmental impact. </a> In addition,  
                         <a href="javascript:void(0);" class="sourceEvidence" id="tag_12" data-keyword="con12">the costly panels leave massive pollutants behind during production. </a> Finally, long-term research shows that 
@@ -187,7 +184,7 @@
 
         <div id="debateEnds" class="appsection">
             <h4>Take a Stand</h4>
-            <p>You scored <span id="finalCurrentScore"></span> out of a possible <span id="finalWinningScore"></span>.</p>
+            <p>You scored <span id="finalCurrentScore"></span>. You needed <span id="finalWinningScore"></span> to win.</p>
             <p id="finalFeedback"></p>
             <a href="index.html" id="restartLink"></a>
         </div>
@@ -211,7 +208,8 @@
                 <div class="col-md-4 panel panel-default">
                     <h4>Debate!</h4>
                     <div id="debateArea">
-                        <p><b>Score: </b><span id="currentScore"></span>/<span id="winningScore"></span>
+                        <p><b>Score: </b><span id="currentScore"></span>/<span id="winningScore"></span></p>
+                        <p><b>Use</b> one of your supports to begin the debate.</p>
                     </div>
                 </div>
                 <div class="col-md-4 panel panel-default stanceStore">
