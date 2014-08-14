@@ -41,21 +41,7 @@ function showDialog(title,message,buttons,targetDivName,leavingDivName){
 	        
         }
         
-function showScore(message, score){
-	
-		
-	        BootstrapDialog.show(
-			{
-	            title: 'Score',
-	            message: message + ' Your score is ' + score + '!',
-	            buttons: [{
-	                label: 'Thanks!',
-	                action: function(dialog) {
-					    dialog.close();
-	                }
-	            }]
-	        });
-}
+
 
 // used when you want to confirm something
 function showConfirmDialog(title,message){

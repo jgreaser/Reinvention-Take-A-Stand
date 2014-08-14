@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     var challengerIsHere = false; //this is for treating screens differently depending on whether debate has started
 
-    var setDelay = '';
+    var delay;
 
 
 
@@ -269,22 +269,16 @@ $(document).ready(function() {
 
             addPlayerEvidence(id); //adds player evidence, 
             updateScore();
-
-
-
-            //DELAY THIS
-            addChallengerEvidence();
-
-            updateScore();
-            //	}
-            //clearInterval(setDelay);//clear the timeout
-
+            
         } else {
             showDialog("Take a Stand!", "You have already played that source.", "justContinue");
 
         }
-        //NEEDS TO BE AT VERY END
-        isDebateOver();
+       
+    }
+    
+    function updateChallengerEvidence(){
+	   	
     }
 
     function updateScore() {
@@ -324,14 +318,14 @@ $(document).ready(function() {
         //showscore has to handle text, score, and the function to call after - if it's player, it will call the challenger. If it's challenger, it doesn't have followup function
         if ($.inArray(sourceID, matchingEvidenceToArgument[mainArgumentID].matchingEvidence) > -1) {
             currentScore += scoreMatchingStanceMatchingArgument;
-            showScore('This source supports your stance, and it matches your argument.', scoreMatchingStanceMatchingArgument);
+            showScore('This source supports your stance, and it matches your argument.', scoreMatchingStanceMatchingArgument,true);
 
         } else if ($.inArray(sourceID, matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence) > -1) {
             currentScore += scoreCounteringStance;
-            showScore('This is a counter-argument to your stance!', scoreCounteringStance);
+            showScore('This is a counter-argument to your stance!', scoreCounteringStance,true);
         } else {
             currentScore += scoreMatchingStance;
-            showScore("This source supports your stance, but it doesn't doesn't match argument.", scoreMatchingStance);
+            showScore("This source supports your stance, but it doesn't doesn't match argument.", scoreMatchingStance,true);
         }
     }
 
@@ -339,13 +333,13 @@ $(document).ready(function() {
     function calculateChallengerScore(sourceID) {
         if ($.inArray(sourceID, matchingEvidenceToArgument[mainArgumentID].matchingEvidence) > -1) {
             currentScore += scoreMatchingStanceMatchingArgument;
-            showScore('This source supports your stance, and it matches your argument.', scoreMatchingStanceMatchingArgument);
+            showScore('This source supports your stance, and it matches your argument.', scoreMatchingStanceMatchingArgument,false);
         } else if ($.inArray(sourceID, matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence) > -1) {
             currentScore += scoreCounteringStance;
-            showScore('This is a counter-argument to your stance!', scoreCounteringStance, 'challenger');
+            showScore('This is a counter-argument to your stance!', scoreCounteringStance,false);
         } else {
             currentScore += scoreMatchingStance;
-            showScore("This source supports your stance, but it doesn't doesn't match argument.", scoreMatchingStance);
+            showScore("This source supports your stance, but it doesn't doesn't match argument.", scoreMatchingStance,false);
         }
     }
 
@@ -353,8 +347,6 @@ $(document).ready(function() {
     function isDebateOver() {
 
         if (throwDownSourcesPlayed == maxEvidence) {
-            alert("it's over, yo!");
-
             changeScreen("debateEnds");
             provideFeedback();
         }
@@ -384,6 +376,34 @@ $(document).ready(function() {
 
 
     }
+    
+    
+    function showScore(message, score,isPerson){
+			// Is person means that the score is for the person playing
+		
+			if(isPerson){
+				BootstrapDialog.confirm(message + ' Your score is ' + score + '!', function(result) {
+		            
+		                // If user chooses yes then...
+		               addChallengerEvidence();
+					   updateScore();
+		        });
+			} else {
+		        BootstrapDialog.show(
+				{
+		            title: 'Score',
+		            message: message + ' Your score is ' + score + '!',
+		            buttons: [{
+		                label: 'Thanks!',
+		                action: function(dialog) {
+						    dialog.close();
+						    isDebateOver();
+						    
+		                }
+		            }]
+		        });
+	        }
+}
 
 
 
