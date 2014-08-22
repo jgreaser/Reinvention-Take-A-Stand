@@ -111,16 +111,28 @@ $(document).ready(function() {
 
 
         mainArgument = $(this).text();
-        $('.mainArgument').html("<p><b>" + mainArgument + "</b></p>");
-
-        //ADD HERE: Need to allow student to chose another argument. Just add a "yes need to change it" button that closes the dialog, but doesn't do anything else.
-        BootstrapDialog.confirm("Your main argument is: " + mainArgument + ", are you sure?", function(result) {
+        $('.mainArgument').html("<p><b>" + mainArgument + "</b></p>").hide();
+		$('.mainArgument').fadeIn(400);
+		
+		
+		setTimeout(callDialogNow, 800);
+    
+		
+		function callDialogNow(){
+			
+			 BootstrapDialog.confirm("Your main argument is: " + mainArgument + ", are you sure?", function(result) {
             if (result) {
                 // If user chooses yes then...
                 stanceSide = $(this).data('stance');
                 changeScreen("chooseSources");
             }
         });
+				
+		
+		}
+
+        //ADD HERE: Need to allow student to chose another argument. Just add a "yes need to change it" button that closes the dialog, but doesn't do anything else.
+       
 
     });
 
@@ -301,15 +313,17 @@ $(document).ready(function() {
     // player throwdown - adds text, updateds array, etc.
     function addChallengerEvidence() {
 
+		//DELAY HERE
 
         //add the first counter evidence source to the screen
         var challengerSourceID = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence[throwDownSourcesPlayed - 1]; //cache challenger source ID
 
         var source = $('#' + challengerSourceID).html(); // Cache Source Text
-        $('#debateArea').append("<p class='alert alert-danger'>" + source + "</p>");
+        $('#debateArea').append("<p class='alert alert-danger'>" + source + "</p>").hide().fadeIn();
 
+	
         calculateChallengerScore(challengerSourceID);
-
+		
     }
 
 
@@ -331,16 +345,23 @@ $(document).ready(function() {
 
 
     function calculateChallengerScore(sourceID) {
+		
+		setTimeout(callDialogBox, 800);
+		
+		function callDialogBox(){
+		
         if ($.inArray(sourceID, matchingEvidenceToArgument[mainArgumentID].matchingEvidence) > -1) {
             currentScore += scoreMatchingStanceMatchingArgument;
-            showScore('This source supports your stance, and it matches your argument.', scoreMatchingStanceMatchingArgument,false);
+            showScore("The challenger's source supports your stance, and it matches your argument.", scoreMatchingStanceMatchingArgument,false);
         } else if ($.inArray(sourceID, matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence) > -1) {
             currentScore += scoreCounteringStance;
-            showScore('This is a counter-argument to your stance!', scoreCounteringStance,false);
+            showScore('The challenger played a strong counter-argument to your stance!', scoreCounteringStance,false);
         } else {
             currentScore += scoreMatchingStance;
             showScore("This source supports your stance, but it doesn't doesn't match argument.", scoreMatchingStance,false);
         }
+		}
+		
     }
 
 
@@ -382,17 +403,17 @@ $(document).ready(function() {
 			// Is person means that the score is for the person playing
 		
 			if(isPerson){
-				BootstrapDialog.confirm(message + ' Your score is ' + score + '!', function(result) {
+				BootstrapDialog.confirm(message + '<br /> Points: ' + score + '!', function(result) {
 		            
 		                // If user chooses yes then...
-		               addChallengerEvidence();
-					   updateScore();
+		               		setTimeout(addChallengerEvidence, 800);
+						   updateScore();
 		        });
 			} else {
 		        BootstrapDialog.show(
 				{
 		            title: 'Score',
-		            message: message + ' Your score is ' + score + '!',
+		            message: message + '<br /> Points: ' + score + '!',
 		            buttons: [{
 		                label: 'Thanks!',
 		                action: function(dialog) {
