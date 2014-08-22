@@ -318,6 +318,14 @@ $(document).ready(function() {
         //add the first counter evidence source to the screen
         var challengerSourceID = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence[throwDownSourcesPlayed - 1]; //cache challenger source ID
 
+		//make challenger image flash somehow
+		$('.challengerImage').fadeTo("fast", 0.25);
+		$('.challengerImage').fadeTo("fast", 0.75);
+		$('.challengerImage').fadeTo("fast", 0.0);
+		$('.challengerImage').fadeTo("fast", 0.75);
+		$('.challengerImage').fadeTo("fast", 0.5);
+		$('.challengerImage').fadeTo("fast", 1);
+
         var source = $('#' + challengerSourceID).html(); // Cache Source Text
         $('#debateArea').append("<p class='alert alert-danger'>" + source + "</p>").hide().fadeIn();
 
