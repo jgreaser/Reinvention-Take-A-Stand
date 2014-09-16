@@ -1,7 +1,8 @@
 $(document).ready(function() {
-    //warning message that solar is bad isn't available
+    //need to insert warning message that solar is bad isn't available
+	
 
-
+	//hide all sections on load
     $("#index").hide();
     $("#chooseArgument").hide();
     $("#chooseSources").hide();
@@ -13,13 +14,14 @@ $(document).ready(function() {
 
     var stanceSide = ''; //what side are you on? won't use initially, but will need it later when we can choose either side
 
-    var mainArgument = '';
-    var supportingEvidence = [];
+    var mainArgument = '';//initializing main argument - where your main argument is stored.
+    var supportingEvidence = []; //this will be the array storing the supporting evidence
 
     var matchingEvidenceToArgument = [{
-        argument: 01,
-        matchingEvidence: ["tag_01", "tag_02", "tag_03"],
-        matchingCounterEvidence: ["tag_11", "tag_12", "tag_13"]
+        argument: 01, 
+		//should add "argument text" here, instead of storing it in the html file
+        matchingEvidence: ["tag_01", "tag_02", "tag_03"], //evidence  with these tags counts as supporting evidence
+        matchingCounterEvidence: ["tag_11", "tag_12", "tag_13"] //evidence with these tags counts as counter evidence
     }, {
         argument: 02,
         matchingEvidence: ["tag_04", "tag_05", "tag_06"],
@@ -30,31 +32,31 @@ $(document).ready(function() {
 
 
 
-    var evidenceCount = 0;
-    var maxEvidence = 3;
+    var evidenceCount = 0; //initial evidence count - used in the learner's list of supporting evidence
+    var maxEvidence = 3; //tota number of sources learner can keep
 
     var currentScreen = "index"; // What is the current screen the app is on?
 
-    var throwDownSourcesPlayed = 0;
+    var throwDownSourcesPlayed = 0; //count for sources played in the debate portion - compared to "maxEvidence" to determine if play continues
 
-    var winningScore = 20;
-    var currentScore = 0;
+    var winningScore = 20; //score required to win
+    var currentScore = 0; //tracks learner's current score
 
-    var scoreMatchingStanceMatchingArgument = 20;
-    var scoreMatchingStance = 10;
-    var scoreCounteringStance = -10;
+    var scoreMatchingStanceMatchingArgument = 20; //if a piece of evidence matches both the stance and the argument, it is worth this much
+    var scoreMatchingStance = 10; //if a piece of evidence matches ONLY the argument, it is worth this much
+    var scoreCounteringStance = -10; //if a piece of evidnece is COUNTER evidence for your argument, it is worth this much
 
-    var debateThrowdownPlayerArray = [];
-    var debateThrowdownChallengerArray = [];
+    var debateThrowdownPlayerArray = []; //for debate; initiatialize array tracking sources on the player side
+    var debateThrowdownChallengerArray = []; //for debate; initialize array tracking sources on the challenger side
 
     var challengerIsHere = false; //this is for treating screens differently depending on whether debate has started
 
-    var delay;
+    var delay; //not currently used; we were going to use this to setup delay between player/challenger actions in debate.
 
 
 
     // Set the initial Screen to display (function below)
-    changeScreen(currentScreen);
+    changeScreen(currentScreen); //currentScreen == "index"
 
     //===================================================
     // Updates the current screen
@@ -67,18 +69,18 @@ $(document).ready(function() {
         currentScreen = changeTo;
         $('#' + currentScreen).show();
 		
-		ga('send', 'event', 'Navigation', 'Forward', currentScreen);
+		ga('send', 'event', 'Navigation', 'Forward', currentScreen);//reports current screen
 
 
     }
 
-    //INITIATE PROTOTYPE!
     //Initial dialog, show index
+	//These dialogs essentially control navigation through the app - check out the code in js/dialog.js
     showDialog("Take a Stand!", "It's time to debate! Are you ready?", "buttons1", "index", 'none');
 
 
     //PICK SIDE
-    //solar is bad - not allowed - error message
+    //solar is bad - not allowed - error message - need to add to button also
     $('#solarisbad').click(function() {
         alert("Sorry, that hasn't been built yet. But it's also a fascinating argument worthy of explorations. Just not one that has been produced for this prototype.");
     });
@@ -90,9 +92,9 @@ $(document).ready(function() {
         // Show confirm dialog
         BootstrapDialog.confirm("You have chosen the " + stance + " stance, are you sure?", function(result) {
             if (result) {
-                // If user chooses yes then...
-                stanceSide = $(this).data('stance');
-                changeScreen("chooseArgument");
+                // If user confirms their stance,  then...
+                stanceSide = $(this).data('stance'); //pulls data from HTML page - need to put that in JS/XML instead
+                changeScreen("chooseArgument"); //change screen to chooseArgument
             }
         });
 
@@ -104,17 +106,13 @@ $(document).ready(function() {
     $('.argumentLink').click(function() {
 
         //Add argument text to the varible mainARgument, which is used to populate the argument later
+        mainArgumentID = parseInt($(this).data('argumentid')); //Another example of storing information in HTML instead of js/xml
 
-        mainArgumentID = parseInt($(this).data('argumentid'));
+		//populate argument&counterargument arrays
+        //I dont' think this line actually does anything...was previously used for an alert or console log
+		var counterEvidenceSourcesForArgument = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence; 
 
-
-
-
-
-        var counterEvidenceSourcesForArgument = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence; //populate argument&counterargument arrays
-
-
-        mainArgument = $(this).text();
+        mainArgument = $(this).text();//gets main argument from HTMl
         $('.mainArgument').html("<p><b>" + mainArgument + "</b></p>").hide();
 		$('.mainArgument').fadeIn(400);
 		
@@ -122,7 +120,7 @@ $(document).ready(function() {
 		ga('send', 'event', 'Choices', 'Choose argument', mainArgument);
 		
 		
-		setTimeout(callDialogNow, 800);
+		setTimeout(callDialogNow, 800);//a timeout before calling callDialogNow
     
 		
 		function callDialogNow(){
@@ -130,23 +128,17 @@ $(document).ready(function() {
 			 BootstrapDialog.confirm("<b>Main argument:</b><br /><i> " + mainArgument + "</i> <br /><br />Are you sure you want to use this as your main argument?", function(result) {
             if (result) {
                 // If user chooses yes then...
-                stanceSide = $(this).data('stance');
-                changeScreen("chooseSources");
+                stanceSide = $(this).data('stance');//gets stance text from HTML
+                changeScreen("chooseSources");//go to chooseSource screen
             }
         });
-				
-		
 		}
-
-        //ADD HERE: Need to allow student to chose another argument. Just add a "yes need to change it" button that closes the dialog, but doesn't do anything else.
-       
-
     });
 
 
 
     //PICK SOURCES
-    //hide sources
+    //hides sources on page load - should move up with other hides() or be otherwise refactored...
     $('#source01').hide();
     $('#source02').hide();
     $('#source03').hide();
@@ -154,33 +146,29 @@ $(document).ready(function() {
     //show source when clicked
     $('.sourceLink').click(function() {
 
-        var sourceToShow = $(this).data('target');
-		
-		var sourceTextForTracking = $(this).text();	
+        var sourceToShow = $(this).data('target');//which source to show
+		var sourceTextForTracking = $(this).text();	//gets text of source to send to google analytics
 	
 		//report	
 		ga('send', 'event', 'Build stance', 'Choose source', sourceTextForTracking);
 
 
-        //hide the other dives (yes I know I could traverse DOM to get the names but don't feel like looking that up right now)
+        //hide the other divs (yes I know I could traverse DOM to get the names but don't feel like looking that up right now)
         $('#source01').hide();
         $('#source02').hide();
         $('#source03').hide();
 
-        $(sourceToShow).show();
+        $(sourceToShow).show();//show the source that was clicked on
     });
 
 
 
     //PICK EVIDENCE FROM SOURCES
-
+	//add evidence to supportingEvidence Array, using ID
     $(".sourceEvidence").click(function(event) {
-        //add evidence to supportingEvidence Array, using ID
 
         // Cache selected item
-        var item = $(this).attr('id');
-		
-
+        var item = $(this).attr('id'); //gets id of evidence from html - to match against the evidence arrays
 		
 
         // Check if it already exists in he array before adding it.
@@ -192,17 +180,14 @@ $(document).ready(function() {
 		
 			//report	
 			ga('send', 'event', 'Build stance', 'Choose evidence', item);
-
-			
         }
 
 
-        //add evidence to store       
-    
+        //add evidence to list of supporting evidence on html page       
         buildSupportingEvidenceList();
 
 
-        //Determine when to go to CHALLENGER
+        //Determine when to go to CHALLENGER - fires when the max evidence is reached
         if (evidenceCount == maxEvidence) {
 
 			//report	
@@ -216,7 +201,8 @@ $(document).ready(function() {
 					ga('send', 'event', 'Challenger', 'Challenge accepted', 'challenge accepted');
 
 					
-                    changeScreen("debate");
+                    changeScreen("debate");//GO DEBATE
+					
                     // Update the debate Supports so that you can use them...
                     buildSupportingEvidenceList();
                     buildCounterSupportingEvidenceList(); //and don't forget to add the countersupportingevidence	
@@ -230,9 +216,9 @@ $(document).ready(function() {
 
     function buildSupportingEvidenceList() {
 
+        $('.supportingEvidenceList').html('');//clears our supportingevidencelist
 
-        $('.supportingEvidenceList').html('');
-
+		//loop through array to build supportingevidence list
         $.each(supportingEvidence, function(key, value) {
             // Cache title of source
             var title = $('#' + value).html();
@@ -244,8 +230,6 @@ $(document).ready(function() {
             } else if (currentScreen == "debate") {
                 $('.supportingEvidenceList').append("<li>" + title + " <a href='javascript:void(0);' data-id='" + value + "' class='supportingEvidenceListItemUse'>[Use]</li>");
             }
-
-
         });
 
 
@@ -262,9 +246,8 @@ $(document).ready(function() {
         }
     }
 
+   
     function buildCounterSupportingEvidenceList() {
-
-
         $('.counterSupportingEvidenceList').html('');
 
         $.each(matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence, function(key, value) {
@@ -279,9 +262,9 @@ $(document).ready(function() {
 
 
 
-
-    function removeSupportingEvidenceItem(id) {
         // Remove item from array
+    function removeSupportingEvidenceItem(id) {
+
         var itemid = supportingEvidence.indexOf(id);
         supportingEvidence.splice(itemid, 1);
         if (evidenceCount > 0) {
@@ -294,7 +277,7 @@ $(document).ready(function() {
 
 
 
-    //HROWDOWN CODE 
+    //THROWDOWN CODE 
     function addSourcetoDebate(id) {
 
 
@@ -304,9 +287,6 @@ $(document).ready(function() {
 
         if (isInArray == -1) //ie, if evidence isn't already in the 'stuff you've played' array, aka debateThrowDownPlayerArray
         {
-
-		
-
             throwDownSourcesPlayed++;
             calculatePlayerScore(id);
 
@@ -314,42 +294,39 @@ $(document).ready(function() {
             updateScore();
             
         } else {
-            showDialog("Take a Stand!", "You have already played that source.", "justContinue");
+            showDialog("Take a Stand!", "You have already played that source.", "justContinue");//error message if you try to play source twice
 
         }
        
     }
     
     function updateChallengerEvidence(){
-	   	
+	   	//BLANK DOESNT DO ANYTHING
     }
 
+	//Update score
     function updateScore() {
         $('#currentScore').text(currentScore);
         $('#winningScore').text(winningScore);
 
     }
 
-    //trigger opponent action
+	//add player evidence
     function addPlayerEvidence(id, sourceplayed) {
-
-
 		//report
 		ga('send', 'event', 'Debate', 'add evidence to debate', sourceplayed);
-
 
         debateThrowdownPlayerArray.push(id);
 
         var source = $('#' + id).html(); // Cache Source
 
         $('#debateArea').append("<p class='text-right alert alert-success'>" + source + "</p>"); // add text to debate area
-
     }
 
-    // player throwdown - adds text, updateds array, etc.
+    // player throwdown - adds text, updates array, etc.
     function addChallengerEvidence() {
 
-		//DELAY HERE
+
 
         //add the first counter evidence source to the screen
         var challengerSourceID = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence[throwDownSourcesPlayed - 1]; //cache challenger source ID
@@ -362,11 +339,11 @@ $(document).ready(function() {
 		$('.challengerImage').fadeTo("fast", 0.5);
 		$('.challengerImage').fadeTo("fast", 1);
 
-        var source = $('#' + challengerSourceID).html(); // Cache Source Text
-        $('#debateArea').append("<p class='alert alert-danger'>" + source + "</p>").hide().fadeIn();
+        var source = $('#' + challengerSourceID).html(); // Cache Source Text - stored in html
+        $('#debateArea').append("<p class='alert alert-danger'>" + source + "</p>").hide().fadeIn(); //add challenger text / fade in
 
 	
-        calculateChallengerScore(challengerSourceID);
+        calculateChallengerScore(challengerSourceID); //update score
 		
     }
 
@@ -389,7 +366,8 @@ $(document).ready(function() {
 
 
     function calculateChallengerScore(sourceID) {
-		
+		        //showscore has to handle text, score, and the function to call after - if it's player, it will call the challenger. If it's challenger, it doesn't have followup function
+
 		setTimeout(callDialogBox, 800);
 		
 		function callDialogBox(){
@@ -408,10 +386,10 @@ $(document).ready(function() {
 		
     }
 
-
+	//is the debate over? just checking. 
     function isDebateOver() {
 
-        if (throwDownSourcesPlayed == maxEvidence) {
+        if (throwDownSourcesPlayed == maxEvidence) {//yes its over! do this stuff!
             changeScreen("debateEnds");
             provideFeedback();
         }
@@ -449,7 +427,7 @@ $(document).ready(function() {
     
     
     function showScore(message, score,isPerson){
-			// Is person means that the score is for the person playing
+			// isPerson ==  the person playing
 		
 			if(isPerson){
 				BootstrapDialog.confirm(message + '<br /> Points: ' + score + '!', function(result) {
