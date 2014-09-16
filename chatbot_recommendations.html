@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Chatbot Recommendations</title>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="chatbot_recommendations.js"></script>
+    <script src="js/dialog.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href="css/theme.css" rel="stylesheet" />
+
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-dialog.min.js">
+        <!-- http://nakupanda.github.io/bootstrap3-dialog/ -->
+    </script>
+
+    <style>
+        .draggable {
+            width: 90px;
+            height: 80px;
+            padding: 5px;
+            float: left;
+            margin: 0 10px 10px 0;
+            font-size: .9em;
+        }
+        .ui-widget-header p,
+        .ui-widget-content p {
+            margin: 0;
+        }
+        #snaptarget {
+            height: 140px;
+        }
+        .drag {
+            z-index: 1060;
+        }
+        .drop {
+            z-index: 0;
+        }
+		
+		.frameit
+		{
+		color: red;
+	    border-style: solid;
+   		border-width: 5px;
+		}
+		
+		.scoreGood {
+		color: green;	
+		}
+		
+		.scoreBad {
+		color: grey;	
+		}
+		
+		.fullscreenLink{
+		color: grey;	
+		}
+		
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div id="index" class="appsection">
+            <h1>Recommendations</h1>
+           
+            <div class=" row panel panel-default ">
+            
+            
+            
+            
+            
+            
+            
+                <div class="col-md-8 panel panel-default chooseBad bg-success">
+				
+                
+                
+                
+                
+                <div class="alert alert-success" role="alert">Top Recommendation</div>
+                
+                <div class="row">
+      <div class="col-xs-8 col-sm-6">
+         <p><img src="images/rec_02.jpg"/><br /><a href="#"><span class="glyphicon glyphicon-fullscreen fullscreenLink"></span> Video</a></p>
+      </div>
+      <div class="col-4 col-6 text-left">
+                  <p><b>Rating</b>: 
+                <span class="glyphicon glyphicon-leaf scoreGood"></span>
+                <span class="glyphicon glyphicon-leaf scoreGood"></span>
+                <span class="glyphicon glyphicon-leaf scoreGood"></span>
+                <span class="glyphicon glyphicon-leaf scoreGood"></span>
+                <span class="glyphicon glyphicon-leaf scoreGood"></span>
+                </p>
+                <p><b>Duration</b>: 03:34</p>
+
+                <p>Video discussing the impact of a healthy diet on overall fitness. Covers calorie input vs. output, the dangers posed by a reliant on too much grain, and common misconceptions about saturated fat. </p>
+      </div>
+             </div>   
+              
+     
+     		
+            
+            
+            
+            </div>
+                   	 <div class="col-md-4 panel panel-default chooseBad">
+				<div class="alert alert-warning" role="alert">Matching Content</div>
+                <ul class="list-unstyled">
+                	<li><img src="images/rec_01.jpg"/><br /><a href="#"><span class="glyphicon glyphicon-fullscreen fullscreenLink"></span> Complete Lesson</a><br />
+                		<b>Rating</b>: 
+               				<span class="glyphicon glyphicon-leaf scoreGood"></span>
+                			<span class="glyphicon glyphicon-leaf scoreGood"></span>
+                			<span class="glyphicon glyphicon-leaf scoreGood"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                            <br />
+                               <br /><hr />
+           		  </li>
+                	<li><img src="images/rec_03.jpg"/><br /><a href="#"><span class="glyphicon glyphicon-fullscreen fullscreenLink"></span> Informational Graphic</a><br />
+                		<b>Rating</b>: 
+               				<span class="glyphicon glyphicon-leaf scoreGood"></span>
+                			<span class="glyphicon glyphicon-leaf scoreGood"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                               <br />
+                                  <br /><hr />
+              		</li>
+                	<li><img src="images/rec_04.jpg"/><br /><a href="#"><span class="glyphicon glyphicon-fullscreen fullscreenLink"></span> Interactive</a><br />
+                		<b>Rating</b>: 
+               				<span class="glyphicon glyphicon-leaf scoreGood"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                			<span class="glyphicon glyphicon-leaf scoreBad"></span>
+                               <br />
+                                  <br /><hr />
+              		</li>
+                    <li><a href="#">More...</a></li>
+                
+                
+                
+                
+                
+                </ul>
+     			
+                </div>
+            </div>
+         
+         
+         </div>
+            
+           
+            <div class="row panel panel-default">
+
+            
+            
+            
+            </div>
+        </div>
+
+
+
+
+</body>
+
+</html>

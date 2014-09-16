@@ -2,14 +2,28 @@ $(document).ready(function() {
     //warning message that solar is bad isn't available
 
 
-    $("#index").hide();
-    $("#chooseArgument").hide();
-    $("#chooseSources").hide();
-    $("#challengerAppears").hide();
-    $("#debate").hide();
-    $("#debateEnds").hide();
-    $("#scoringAlert").hide();
+    $("#index").show();
+    $("#chooseArgument").show();
+    $("#chooseSources").show();
+    $("#challengerAppears").show();
+    $("#debate").show();
+    $("#debateEnds").show();
+    $("#scoringAlert").show();
 
+	$('div').mousedown(function(){
+		var text = $(this).text();
+		alert("Look at all this stuff the tool is about to pull down into our database of stuff, while also entering metadata in the corresponding fields:" + text);
+		});	
+		
+	$('div').mouseenter(function(){
+	$(this).addClass('frameit');
+	$(this).parents().removeClass('frameit');
+	});
+	
+	$('div').mouseleave(function(){
+	$(this).removeClass('frameit');
+	});
+	
 
     var stanceSide = ''; //what side are you on? won't use initially, but will need it later when we can choose either side
 
@@ -66,9 +80,6 @@ $(document).ready(function() {
         // Show new screen
         currentScreen = changeTo;
         $('#' + currentScreen).show();
-		
-		ga('send', 'event', 'Navigation', 'Forward', currentScreen);
-
 
     }
 
@@ -110,7 +121,6 @@ $(document).ready(function() {
 
 
 
-
         var counterEvidenceSourcesForArgument = matchingEvidenceToArgument[mainArgumentID].matchingCounterEvidence; //populate argument&counterargument arrays
 
 
@@ -118,16 +128,13 @@ $(document).ready(function() {
         $('.mainArgument').html("<p><b>" + mainArgument + "</b></p>").hide();
 		$('.mainArgument').fadeIn(400);
 		
-		//report	
-		ga('send', 'event', 'Choices', 'Choose argument', mainArgument);
-		
 		
 		setTimeout(callDialogNow, 800);
     
 		
 		function callDialogNow(){
 			
-			 BootstrapDialog.confirm("<b>Main argument:</b><br /><i> " + mainArgument + "</i> <br /><br />Are you sure you want to use this as your main argument?", function(result) {
+			 BootstrapDialog.confirm("Your main argument is: " + mainArgument + ", are you sure?", function(result) {
             if (result) {
                 // If user chooses yes then...
                 stanceSide = $(this).data('stance');
@@ -155,12 +162,6 @@ $(document).ready(function() {
     $('.sourceLink').click(function() {
 
         var sourceToShow = $(this).data('target');
-		
-		var sourceTextForTracking = $(this).text();	
-	
-		//report	
-		ga('send', 'event', 'Build stance', 'Choose source', sourceTextForTracking);
-
 
         //hide the other dives (yes I know I could traverse DOM to get the names but don't feel like looking that up right now)
         $('#source01').hide();
@@ -179,9 +180,6 @@ $(document).ready(function() {
 
         // Cache selected item
         var item = $(this).attr('id');
-		
-
-		
 
         // Check if it already exists in he array before adding it.
         if (supportingEvidence.indexOf(item) == -1) {
@@ -189,11 +187,6 @@ $(document).ready(function() {
             supportingEvidence.push(item);
             //increase evidence count
             evidenceCount++;
-		
-			//report	
-			ga('send', 'event', 'Build stance', 'Choose evidence', item);
-
-			
         }
 
 
@@ -205,17 +198,9 @@ $(document).ready(function() {
         //Determine when to go to CHALLENGER
         if (evidenceCount == maxEvidence) {
 
-			//report	
-			ga('send', 'event', 'Challenger', 'Challenger appears', 'challenger appears');
-
-            BootstrapDialog.confirm("<img src='images/challenger.jpg' /><br />A challenger appears! But you can only bring " + maxEvidence + " sources to the debate. Are you comfortable with your choices?", function(result) {
+            BootstrapDialog.confirm("A challenger appears! But you can only bring " + maxEvidence + " sources to the debate. Are you comfortable with your choices?", function(result) {
                 if (result) {
                     // If user chooses yes then...
-					
-					//report
-					ga('send', 'event', 'Challenger', 'Challenge accepted', 'challenge accepted');
-
-					
                     changeScreen("debate");
                     // Update the debate Supports so that you can use them...
                     buildSupportingEvidenceList();
@@ -305,12 +290,10 @@ $(document).ready(function() {
         if (isInArray == -1) //ie, if evidence isn't already in the 'stuff you've played' array, aka debateThrowDownPlayerArray
         {
 
-		
-
             throwDownSourcesPlayed++;
             calculatePlayerScore(id);
 
-            addPlayerEvidence(id, throwDownSourcesPlayed); //adds player evidence, 
+            addPlayerEvidence(id); //adds player evidence, 
             updateScore();
             
         } else {
@@ -331,12 +314,7 @@ $(document).ready(function() {
     }
 
     //trigger opponent action
-    function addPlayerEvidence(id, sourceplayed) {
-
-
-		//report
-		ga('send', 'event', 'Debate', 'add evidence to debate', sourceplayed);
-
+    function addPlayerEvidence(id) {
 
         debateThrowdownPlayerArray.push(id);
 
@@ -420,27 +398,22 @@ $(document).ready(function() {
 
 //Feedback in debate scoring window
     function provideFeedback() {
-		
-		//report they made it to final screen
-		ga('send', 'event', 'Navigation', 'Final Screen', 'Final Screen Loaded');
-
-		
         if (currentScore > winningScore) {
             $('#finalCurrentScore').html(currentScore);
             $('#finalWinningScore').html(winningScore);
             $('#finalFeedback').html("That's great, you won.");
-            //$('#restartLink').html('Play again if you want.');
+            $('#restartLink').html('Play again if you want.');
         } else if (currentScore == winningScore) {
             $('#finalCurrentScore').html(currentScore);
             $('#finalWinningScore').html(winningScore);
             $('#finalFeedback').html("It's a tie!");
-            //$('#restartLink').html('That was close! Improve your score!');
+            $('#restartLink').html('That was close! Improve your score!');
 
         } else if (currentScore < winningScore) {
             $('#finalCurrentScore').html(currentScore);
             $('#finalWinningScore').html(winningScore);
             $('#finalFeedback').html("Not the winning condition, unfortunately. You should keep trying.");
-           // $('#restartLink').html('Improve your score, take down this challenger.');
+            $('#restartLink').html('Improve your score, take down this challenger.');
 
         }
 
