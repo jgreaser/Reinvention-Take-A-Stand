@@ -390,8 +390,23 @@ $(document).ready(function() {
     function isDebateOver() {
 
         if (throwDownSourcesPlayed == maxEvidence) {//yes its over! do this stuff!
-            changeScreen("debateEnds");
-            provideFeedback();
+            
+            var str = "You scored " + currentScore + " points, and needed " + winningScore + " points to win.";
+            str += "<br><a id=\"restartLink\" href=\"index.html\">Debate again?</a>"
+            
+            if(currentScore > winningScore) {
+            
+                showDialog("You won!", str);
+                
+            } else if(currentScore == winningScore) {
+            
+                showDialog("You tied", str);
+                
+            } else if(currentScore < winningScore) {
+            
+                showDialog("You lost", str);
+                
+            }
         }
 
     }
