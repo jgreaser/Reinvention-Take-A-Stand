@@ -1,0 +1,23 @@
+{  
+    "topics":{  
+        "solar":{  
+            "stance":{  
+                "advocate":{  
+                    "sources":[  
+                        {  
+                            "Solar Green(backs)":{  
+                                "author":"Mendel Gonzalez"
+                            },
+                            "Bright Sun, Bright Future":{  
+                                "author":"Wendy Jones"
+                            },
+                            "Grey Skies for Solar Energy":{  
+                                "author":"Herman McFunnelweather"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
