@@ -1,0 +1,80 @@
+{  
+    "stances": {
+        "0":{
+            "stance":"against",
+            "title":"Solar energy SHOULD NOT be the primary energy source in the United States."
+        },
+        "1":{
+            "stance":"pro",
+            "title":"Solar energy SHOULD be the primary energy source in the United States."
+        }
+    },
+    "arguments":{  
+        "0":"Solar energy is cheaper over time than fossil fuels.",
+        "1":"Solar energy is better for the environment."
+    },
+    "sources":[  
+        {  
+            "Solar Green(backs)":{  
+                "author":"Mendel Gonzalez",
+                "content":"The sun has produced energy for billions of years. Solar energy is the sun’s rays (solar radiation) that reach the Earth. This energy can be converted into other forms of energy, such as heat and electricity. Solar energy only costs $5 to install. Not only that, the sun's light is free to collect. Because solar energy requires fewer moving parts, solar energy infrastructure costs less to maintain than fossil fuel instrastructure.",
+                "segments":{  
+                    "0":{  
+                        "start":209,
+                        "end":247,
+                        "counter":6
+                    },
+                    "1":{  
+                        "start":263,
+                        "end":298,
+                        "counter":7
+                    },
+                    "2":{  
+                        "start":349,
+                        "end":433,
+                        "counter":8
+                    }
+                }
+            },
+            "Bright Sun, Bright Future":{  
+                "author":"Wendy Jones",
+                "content":"There are several reasons to invest in solar energy. First of all, once you have equipment setup, there is almost zero waste produced by solar systems. Another overlooked result of solar is that solar systems let you produce power on site, limiting the amount of power lines and other infrastructure needed—which reduces the environmental impact. Of course, we all know that solar energy lets you keep carbon sequested safely under the Earth's surface, instead of in the atmosphere. These are just a few reasons to adopt solar energy.",
+                "segments":{  
+                    "3":{  
+                        "start":67,
+                        "end":151,
+                        "counter":6
+                    },
+                    "4":{  
+                        "start":195,
+                        "end":346,
+                        "counter":7
+                    },
+                    "5":{  
+                        "start":375,
+                        "end":534,
+                        "counter":8
+                    }
+                }
+            },
+            "Grey Skies for Solar Energy":{  
+                "author":"Herman McFunnelweather",
+                "content":"Solar is bad, ok? Here are just a few reasons. You may think that solar is green, but the very expensive systems rely on batteries that have a massive environmental impact. In addition, the costly panels leave massive pollutants behind during production. Finally, long-term research shows that jobs lost due to closing coal-fired plants will create significant new costs for the nation.",
+                "segments":{  
+                    "6":{  
+                        "start":86,
+                        "end":172
+                    },
+                    "7":{  
+                        "start":186,
+                        "end":254
+                    },
+                    "8":{  
+                        "start":294,
+                        "end":386
+                    }
+                }
+            }
+        }
+    ]
+}

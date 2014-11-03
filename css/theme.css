@@ -1,92 +1,101 @@
 body {
-  padding-top: 10px;
-  padding-bottom: 30px;
-  font-family: 'Open Sans', sans-serif;
-  font-weight:300;
-  font-size:16px;
-  background-color:#f2f2f2;
-  width:100%;
+	background-color: #f2f2f2;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	padding-bottom: 30px;
+	padding-top: 10px;
+	width: 100%;
 }
 
-h1,h2,h3,h4{
+h1,h2,h3,h4 {
 	font-family: 'Montserrat', sans-serif;
 }
 
 .row {
-    display: table;
+	display: table;
 }
 
 [class*="col-"] {
-    float: none;
-    display: table-cell;
-    vertical-align: top;
+	display: table-cell;
+	float: none;
+	vertical-align: top;
 }
 
 .theme-dropdown .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 20px;
+	display: block;
+	margin-bottom: 20px;
+	position: static;
 }
 
 .theme-showcase > p > .btn {
-  margin: 5px 0;
+	margin: 5px 0;
 }
 
 .theme-showcase .navbar .container {
-  width: auto;
+	width: auto;
 }
 
-.clear{
-	clear:both;
-}
-.appsection{
-
-}
-	.appsection h1{
-		font-size:40px;
-	}
-
-.panel{
-	border:none;
-	box-shadow:none;
-	background-color:#ffffff;
+.clear {
+	clear: both;
 }
 
-/* 1 */
-#origin{
-	text-align:center;
-	padding:20px;
+.appsection {
 }
-.chooseBad,.chooseGood{
-	padding:25px 20px;
-	text-align:center;
-	border-radius:0px;
-}
-	.chooseBad{
-		border-right:solid 1px #e8e8e8;
-	}
-	.chooseGood{
-		border-left:solid 1px #e8e8e8;
-	}
 
-/* 2 */
-.argumentList li a{
-	margin-bottom:10px;
+.appsection h1 {
+	font-size: 40px;
 }
-.mainArgument{
-	padding-top:20px;
-	font-style:italic;
+
+.panel {
+	background-color: #ffffff;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.choose-stance {
+	padding: 25px 20px;
+	text-align: center;
+}
+
+.choose-stance h3 {
+
+    display: none;
+    
+}
+
+.left {
+	border-right: 1px solid rgb(225, 225, 225);
+}
+
+.right {
+	border-left: 1px solid rgb(225, 225, 225);
+}
+
+#origin {
+	padding: 20px;
+	text-align: center;
+}
+
+.argumentList li a {
+	margin-bottom: 10px;
+}
+
+.mainArgument {
+	font-style: italic;
 	font-weight: bold;
-}
-.showSelections{
-	border-left:solid 1px #e8e8e8;
+	padding-top: 20px;
 }
 
+.showSelections {
+	border-left: solid 1px #e8e8e8;
+}
 
 #debateArea.support {
-color: green;	
+	color: green;
 }
 
 #debateArea.counter {
-color: red;	
+	color: red;
 }
