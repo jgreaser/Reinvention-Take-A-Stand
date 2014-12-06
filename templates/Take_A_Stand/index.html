@@ -1,0 +1,144 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Take a Stand</title>
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/theme.css' %}" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="{% static 'js/bootstrap-dialog.min.js' %}"></script>
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static 'js/listeners.js' %}"></script>
+        <script src="{% static 'js/ui.js' %}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- its the index section, where learners Choose Stance. Currently they can only choose one side.  -->
+            <div id="index" class="appsection">
+                <h1>Take a Stand!</h1>
+                <div class="row panel panel-default">
+                    <div class="drop ui-widget-header col-md-4 panel panel-default choose-stance left">
+                        <h3></h3>
+                        <a href="javascript:void(0);" class="btn btn-default">This is my stance.</a>
+                    </div>
+                    <div id="origin" class="ui-widget-header col-md-4 panel panel-default avatar">
+                        <h4>Choose your stance</h4>
+                        <img src="{% static 'images/avatar.png' %}" alt="avatar" />
+                    </div>
+                    <div class="drop ui-widget-header col-md-4 panel panel-default choose-stance right">
+                        <h3></h3>
+                        <a href="javascript:void(0);" class="btn btn-default">This is my stance.</a>
+                    </div>
+                </div>
+            </div>
+            <div id="chooseArgument" class="appsection">
+                <h1>Take a Stand!</h1>
+                <div class="row panel panel-default">
+                    <div class="col-md-8 panel panel-default" id='arguments' style="width:66.6%">
+                        <h4>Main Argument</h4>
+                        <p>What is the main argument that you plan to use to defend your stance?</p>
+                        <ul class="list-unstyled x-list argument-list"></ul>
+                    </div>
+                    <div class="col-md-4 panel panel-default stanceStore showSelections">
+                        <h4>Solar is good.</h4>
+                        <img src="{% static 'images/avatar.png' %}" alt="avatar">
+                        <div class="mainArgument"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="chooseSources" class="appsection">
+                <h1>Take a Stand!</h1>
+                <div class="row panel panel-default">
+                    <div class="col-md-8 panel panel-default">
+                        <h4>Support</h4>
+                        <p>Explore expert opinions about solar energy. Read each source, then select the parts you want to use to defend your stance.</p>
+                        <p><strong>Select a source to begin.</strong>
+                        </p>
+                        <ul class="list-unstyled x-list source-list">
+                            
+                        </ul>
+                    </div>
+                    <div class="col-md-4 panel panel-default stanceStore showSelections">
+                        <h4>Solar is good.</h4>
+                        <img src="{% static 'images/avatar.png' %}" alt="avatar">
+                        <br/>
+                        <br/>
+                        <p>Argument: <span class="mainArgument"></span>
+                        </p>
+                        <p>Supports:
+                            <br />
+                        <ul>
+                            <span class="supportingEvidenceList"></span>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <div class="row panel panel-default">
+                    <div id="source01" class="sources">
+                        <h4><i>Solar Green(backs)</i> by Mendel Gonzalez</h4>
+                        <p>The sun has produced energy for billions of years.  Solar energy is the sun’s rays (solar radiation) that reach the Earth. This energy can be converted into other forms of energy, such as heat and electricity. 
+                            <a href="javascript:void(0);" class="sourceEvidence" id="tag_01" data-keyword="pro01">Solar energy only costs $5 to install.</a> Not only that,  <a href="javascript:void(0);" class="sourceEvidence" id="tag_02" data-keyword="pro02">the sun's light is free to collect.</a> Because solar energy requires fewer moving parts, <a href="javascript:void(0);" class="sourceEvidence" id="tag_03" data-keyword="pro03">solar energy infrastructure costs less to maintain than fossil fuel instrastructure.</a>
+                        </p>
+                    </div>
+                    <div id="source02" class="sources">
+                        <h4><i>Bright Sun, Bright Future</i> by Wendy Jones</h4>
+                        <p>There are several reasons to invest in solar energy. First of all, 
+                            <a href="javascript:void(0);" class="sourceEvidence" id="tag_04" data-keyword="pro04">once you have equipment setup, there is almost zero waste produced by solar systems. </a> Another overlooked result of solar is that 
+                            <a href="javascript:void(0);" class="sourceEvidence" id="tag_05" data-keyword="pro05">solar systems let you produce power on site, limiting the amount of power lines and other infrastructure needed—which reduces the environmental impact.</a> Of course, we all know that 
+                            <a href="javascript:void(0);" class="sourceEvidence" id="tag_06" data-keyword="pro06">solar energy lets you keep carbon sequested safely under the Earth's surface, instead of in the atmosphere.</a> These are just a few reasons to adopt solar energy.
+                        </p>
+                    </div>
+                    <div id="source03" class="sources">
+                        <h4><i>Grey Skies for Solar Energy</i> by Herman McFunnelweather</h4>
+                        <p>Solar is bad, ok? Here are just a few reasons. You may think that solar is green, but 
+                            <a href="javascript:void(0);" class="sourceEvidence" id="tag_11" data-keyword="con11">the very expensive systems rely on batteries that have a massive environmental impact. </a> In addition,  
+                            <a href="javascript:void(0);" class="sourceEvidence" id="tag_12" data-keyword="con12">the costly panels leave massive pollutants behind during production. </a> Finally, long-term research shows that 
+                            <a href="javascript:void(0);" class="sourceEvidence" id="tag_13" data-keyword="con13">jobs lost due to closing coal-fired plants will create significant new costs for the nation.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="debate" class="appsection">
+                <h3>Take a Stand!</h3>
+                <div class="row panel panel-default">
+                    <div class="col-md-4 panel panel-default">
+                        <h4>Solar is bad</h4>
+                        <p>
+                            <img class="challengerImage" src="{% static 'images/challenger.png' %}" alt="challenger">
+                        </p>
+                        <p>Supports:
+                            <br />
+                        <ul>
+                            <span class="counterSupportingEvidenceList"></span>
+                        </ul>
+                        </p>
+                    </div>
+                    <div class="col-md-4 panel panel-default">
+                        <h4>Debate!</h4>
+                        <div id="debateArea">
+                            <p><b>Your Score: </b><span id="currentScore"></span>. Target Score: <span id="winningScore"></span></p>
+                            <p><b>Use</b> one of your supports to begin the debate.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 panel panel-default stanceStore">
+                        <h4>Solar is good</h4>
+                        <img src="{% static 'images/avatar.png' %}" alt="avatar">
+                        <p>Argument: <span class="mainArgument"></span>
+                        </p>
+                        <p>Supports:
+                            <br />
+                        <ul>
+                            <span class="supportingEvidenceList"></span>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </body>
+</html>

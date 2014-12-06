@@ -1,0 +1,101 @@
+body {
+	background-color: #f2f2f2;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	padding-bottom: 30px;
+	padding-top: 10px;
+	width: 100%;
+}
+
+h1,h2,h3,h4 {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.row {
+	display: table;
+}
+
+[class*="col-"] {
+	display: table-cell;
+	float: none;
+	vertical-align: top;
+}
+
+.theme-dropdown .dropdown-menu {
+	display: block;
+	margin-bottom: 20px;
+	position: static;
+}
+
+.theme-showcase > p > .btn {
+	margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+	width: auto;
+}
+
+.clear {
+	clear: both;
+}
+
+.appsection {
+}
+
+.appsection h1 {
+	font-size: 40px;
+}
+
+.panel {
+	background-color: #ffffff;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.choose-stance {
+	padding: 25px 20px;
+	text-align: center;
+}
+
+.choose-stance h3 {
+
+    display: none;
+    
+}
+
+.left {
+	border-right: 1px solid rgb(225, 225, 225);
+}
+
+.right {
+	border-left: 1px solid rgb(225, 225, 225);
+}
+
+#origin {
+	padding: 20px;
+	text-align: center;
+}
+
+.x-list li a {
+	margin-bottom: 10px;
+}
+
+.mainArgument {
+	font-style: italic;
+	font-weight: bold;
+	padding-top: 20px;
+}
+
+.showSelections {
+	border-left: solid 1px #e8e8e8;
+}
+
+#debateArea.support {
+	color: green;
+}
+
+#debateArea.counter {
+	color: red;
+}
