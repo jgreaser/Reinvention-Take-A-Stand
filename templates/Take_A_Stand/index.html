@@ -1,17 +1,18 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Take a Stand</title>
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" />
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
-        <link href="css/theme.css" rel="stylesheet" />
+        <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,700" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/theme.css' %}" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="js/bootstrap-dialog.min.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/listeners.js"></script>
-        <script src="js/ui.js"></script>
+        <script src="{% static 'js/bootstrap-dialog.min.js' %}"></script>
+        <script src="{% static 'js/app.js' %}"></script>
+        <script src="{% static 'js/listeners.js' %}"></script>
+        <script src="{% static 'js/ui.js' %}"></script>
     </head>
     <body>
         <div class="container">
@@ -25,7 +26,7 @@
                     </div>
                     <div id="origin" class="ui-widget-header col-md-4 panel panel-default avatar">
                         <h4>Choose your stance</h4>
-                        <img src="images/avatar.png" alt="avatar" />
+                        <img src="{% static 'images/avatar.png' %}" alt="avatar" />
                     </div>
                     <div class="drop ui-widget-header col-md-4 panel panel-default choose-stance right">
                         <h3></h3>
@@ -39,13 +40,11 @@
                     <div class="col-md-8 panel panel-default" id='arguments' style="width:66.6%">
                         <h4>Main Argument</h4>
                         <p>What is the main argument that you plan to use to defend your stance?</p>
-                        <ul class="list-unstyled argumentList">
-                            
-                        </ul>
+                        <ul class="list-unstyled x-list argument-list"></ul>
                     </div>
                     <div class="col-md-4 panel panel-default stanceStore showSelections">
                         <h4>Solar is good.</h4>
-                        <img src="images/avatar.png" alt="avatar">
+                        <img src="{% static 'images/avatar.png' %}" alt="avatar">
                         <div class="mainArgument"></div>
                     </div>
                 </div>
@@ -58,15 +57,13 @@
                         <p>Explore expert opinions about solar energy. Read each source, then select the parts you want to use to defend your stance.</p>
                         <p><strong>Select a source to begin.</strong>
                         </p>
-                        <ul class="list-unstyled argumentList">
-                            <li><a href="#" data-target="#source01" class="sourceLink btn btn-primary"><i>Solar Green(backs)</i> by Mendel Gonzalez</a></li>
-                            <li><a href="#" data-target="#source02" class="sourceLink btn btn-primary"><i>Bright Sun, Bright Future</i> by Wendy Jones</a></li>
-                            <li><a href="#" data-target="#source03" class="sourceLink btn btn-primary"><i>Grey Skies for Solar Energy</i> by Herman McFunnelweather</a></li>
+                        <ul class="list-unstyled x-list source-list">
+                            
                         </ul>
                     </div>
                     <div class="col-md-4 panel panel-default stanceStore showSelections">
                         <h4>Solar is good.</h4>
-                        <img src="images/avatar.png" alt="avatar">
+                        <img src="{% static 'images/avatar.png' %}" alt="avatar">
                         <br/>
                         <br/>
                         <p>Argument: <span class="mainArgument"></span>
@@ -110,7 +107,7 @@
                     <div class="col-md-4 panel panel-default">
                         <h4>Solar is bad</h4>
                         <p>
-                            <img class="challengerImage" src="images/challenger.png" alt="challenger">
+                            <img class="challengerImage" src="{% static 'images/challenger.png' %}" alt="challenger">
                         </p>
                         <p>Supports:
                             <br />
@@ -128,7 +125,7 @@
                     </div>
                     <div class="col-md-4 panel panel-default stanceStore">
                         <h4>Solar is good</h4>
-                        <img src="images/avatar.png" alt="avatar">
+                        <img src="{% static 'images/avatar.png' %}" alt="avatar">
                         <p>Argument: <span class="mainArgument"></span>
                         </p>
                         <p>Supports:
